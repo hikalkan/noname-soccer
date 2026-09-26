@@ -10,6 +10,8 @@
 			cta_play: "Tarayıcıda oyna",
 			cta_download: "İndir",
 			mobile_note: "En iyisi masaüstünde klavye veya gamepad ile.",
+			version: "Sürüm",
+			dl_version: "Son sürüm",
 			shots_title: "Sahada",
 			shots_lead: "Yayın kamerası, gece ışıkları, serbest vuruşlar ve çıkış töreni — bir arcade paketinde bütün maç günü.",
 			cap_goal: "Gol",
@@ -71,6 +73,8 @@
 			cta_play: "Play in browser",
 			cta_download: "Download",
 			mobile_note: "Best on desktop with keyboard or gamepad.",
+			version: "Version",
+			dl_version: "Latest version",
 			shots_title: "On the pitch",
 			shots_lead: "Broadcast camera, night floodlights, free kicks and walkouts — the whole match day in one arcade package.",
 			cap_goal: "Goal",
@@ -251,7 +255,17 @@
 		}).catch(function () { /* ignore */ });
 	}
 
+	function hideUnstampedVersion() {
+		// publish_web.ps1 replaces the token; the raw misc/landing copy has none to show.
+		document.querySelectorAll(".version-num").forEach(function (el) {
+			if (el.textContent.indexOf("__") === 0) {
+				(el.closest(".version-tag, .dl-version") || el.parentElement).style.display = "none";
+			}
+		});
+	}
+
 	setupLang();
+	hideUnstampedVersion();
 	setupOsHighlight();
 	setupLightbox();
 	setupCopy();

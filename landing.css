@@ -257,6 +257,21 @@ a {
 	white-space: nowrap;
 }
 
+.version-tag {
+	margin: 0.9rem 0 0;
+	color: var(--muted);
+	font-size: 0.85rem;
+	letter-spacing: 0.04em;
+}
+.dl-version {
+	margin: -0.5rem 0 1.5rem;
+	color: var(--muted);
+	font-size: 0.95rem;
+}
+.version-num {
+	font-weight: 700;
+	color: var(--ink);
+}
 .mobile-note {
 	display: none;
 	margin: 0.9rem 0 0;
