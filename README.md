@@ -70,7 +70,7 @@ Difficulty only changes how well the CPU decides — never the physics, never yo
 | Pass | S | A |
 | Through pass | W | Y |
 | Lob / slide | A | X |
-| Skill / shield | Space / Q | RB |
+| Skill / shield | Q | RB |
 | Switch player | Q | LB |
 | Camera | L | — |
 | Pause | Esc / P | Start |
