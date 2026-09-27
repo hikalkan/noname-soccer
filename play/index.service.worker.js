@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1790527053|5554429';
+const CACHE_VERSION = '1790527291|5562945';
 /** @type {string} */
 const CACHE_PREFIX = 'Noname Soccer-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;

@@ -10,9 +10,9 @@ No attributes, no stamina bars, no tactics sliders. Just the match.
 </p>
 
 <p align="center">
-  <a href="https://halilibrahimkalkan.com/noname-soccer/play/"><strong>Play in browser</strong></a>
+  <a href="https://nonamesoccer.com/play/"><strong>Play in browser</strong></a>
   &nbsp;·&nbsp;
-  <a href="https://halilibrahimkalkan.com/noname-soccer/">Landing page</a>
+  <a href="https://nonamesoccer.com/">Landing page</a>
   &nbsp;·&nbsp;
   <a href="https://github.com/hikalkan/noname-soccer/releases/latest"><strong>Download</strong></a>
 </p>
@@ -31,7 +31,7 @@ No attributes, no stamina bars, no tactics sliders. Just the match.
 
 | | |
 |---|---|
-| **Browser** | [halilibrahimkalkan.com/noname-soccer/play/](https://halilibrahimkalkan.com/noname-soccer/play/) — desktop with keyboard or gamepad |
+| **Browser** | [nonamesoccer.com/play/](https://nonamesoccer.com/play/) — desktop with keyboard or gamepad |
 | **Windows** | [NonameSoccer-windows-x64.zip](https://github.com/hikalkan/noname-soccer/releases/latest/download/NonameSoccer-windows-x64.zip) — unzip, run `NonameSoccer.exe` |
 | **macOS** | [NonameSoccer-macos.zip](https://github.com/hikalkan/noname-soccer/releases/latest/download/NonameSoccer-macos.zip) — Universal (Apple Silicon + Intel) |
 
