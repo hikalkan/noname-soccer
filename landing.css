@@ -649,7 +649,6 @@ a {
 	background: transparent;
 	color: #fff;
 	overflow: visible;
-	display: flex;
 	align-items: center;
 	gap: 0.55rem;
 }
