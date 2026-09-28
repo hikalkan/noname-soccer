@@ -30,14 +30,14 @@
 			<div class="hero-veil"></div>
 			<div class="hero-inner">
 				<p class="eyebrow" data-i18n="eyebrow">Arcade 11 v 11</p>
-				<h1 class="logo">NONAME SOCCER</h1>
+				<h1 class="logo"><img src="img/logo.png" alt="Noname Soccer" width="960" height="312"></h1>
 				<p class="tagline" data-i18n="tagline">Play football. Don't manage it.</p>
 				<p class="lede" data-i18n="lede">Full pitch, cute players, honest rules. No attributes, no stamina bars, no tactics sliders — just the match.</p>
 				<div class="cta-row">
 					<a class="btn btn-play" href="play/" data-i18n="cta_play">Play in browser</a>
 					<a class="btn btn-ghost" href="#download" data-i18n="cta_download">Download</a>
 				</div>
-				<p class="version-tag"><span data-i18n="version">Version</span> <span class="version-num">0.1.8</span></p>
+				<p class="version-tag"><span data-i18n="version">Version</span> <span class="version-num">0.1.9</span></p>
 				<p class="mobile-note" data-i18n="mobile_note">Best on desktop with keyboard or gamepad.</p>
 			</div>
 		</section>
@@ -45,7 +45,7 @@
 		<section class="section shots" id="shots" aria-labelledby="shots-title">
 			<div class="wrap">
 				<h2 id="shots-title" data-i18n="shots_title">On the pitch</h2>
-				<p class="section-lead" data-i18n="shots_lead">Broadcast camera, night floodlights, free kicks and walkouts — the whole match day in one arcade package.</p>
+				<p class="section-lead" data-i18n="shots_lead">Walkouts, goal cut-ins, train celebrations, snow and floodlights — the whole match day in one arcade package.</p>
 				<ul class="shot-grid">
 					<li>
 						<button type="button" class="shot" data-full="img/goal.jpg" data-caption-key="cap_goal">
@@ -57,6 +57,18 @@
 						<button type="button" class="shot" data-full="img/walkout.jpg" data-caption-key="cap_walkout">
 							<img src="img/walkout.jpg" alt="" width="1600" height="900" loading="lazy">
 							<span class="shot-cap" data-i18n="cap_walkout">Walkout</span>
+						</button>
+					</li>
+					<li>
+						<button type="button" class="shot" data-full="img/train.jpg" data-caption-key="cap_train">
+							<img src="img/train.jpg" alt="" width="1600" height="900" loading="lazy">
+							<span class="shot-cap" data-i18n="cap_train">Train celebration</span>
+						</button>
+					</li>
+					<li>
+						<button type="button" class="shot" data-full="img/kits.jpg" data-caption-key="cap_kits">
+							<img src="img/kits.jpg" alt="" width="1600" height="900" loading="lazy">
+							<span class="shot-cap" data-i18n="cap_kits">Kit patterns</span>
 						</button>
 					</li>
 					<li>
@@ -78,9 +90,15 @@
 						</button>
 					</li>
 					<li>
-						<button type="button" class="shot" data-full="img/rain.jpg" data-caption-key="cap_rain">
-							<img src="img/rain.jpg" alt="" width="1600" height="900" loading="lazy">
-							<span class="shot-cap" data-i18n="cap_rain">Rain</span>
+						<button type="button" class="shot" data-full="img/snow.jpg" data-caption-key="cap_snow">
+							<img src="img/snow.jpg" alt="" width="1600" height="900" loading="lazy">
+							<span class="shot-cap" data-i18n="cap_snow">Snow</span>
+						</button>
+					</li>
+					<li>
+						<button type="button" class="shot" data-full="img/pitch_side.jpg" data-caption-key="cap_pitch_side">
+							<img src="img/pitch_side.jpg" alt="" width="1600" height="900" loading="lazy">
+							<span class="shot-cap" data-i18n="cap_pitch_side">Mascot and fans</span>
 						</button>
 					</li>
 				</ul>
@@ -91,11 +109,11 @@
 			<div class="wrap">
 				<h2 id="dl-title" data-i18n="dl_title">Download</h2>
 				<p class="section-lead" data-i18n="dl_lead">Portable builds — unzip and play. No installer. Settings live in your user profile.</p>
-				<p class="dl-version"><span data-i18n="dl_version">Latest version</span> <span class="version-num">0.1.8</span></p>
+				<p class="dl-version"><span data-i18n="dl_version">Latest version</span> <span class="version-num">0.1.9</span></p>
 				<div class="dl-grid">
 					<article class="dl-card" data-os="windows">
 						<h3>Windows</h3>
-						<p class="dl-meta" data-i18n="dl_win_meta">x64 · ~57 MB zip · single .exe</p>
+						<p class="dl-meta" data-i18n="dl_win_meta">x64 · ~95 MB zip · single .exe</p>
 						<a class="btn btn-dl" id="dl-win"
 							href="https://github.com/hikalkan/noname-soccer/releases/latest/download/NonameSoccer-windows-x64.zip"
 							data-i18n="dl_win_btn">Download for Windows</a>
@@ -106,7 +124,7 @@
 					</article>
 					<article class="dl-card" data-os="mac">
 						<h3>macOS</h3>
-						<p class="dl-meta" data-i18n="dl_mac_meta">Universal · ~79 MB zip · Apple Silicon + Intel</p>
+						<p class="dl-meta" data-i18n="dl_mac_meta">Universal · ~120 MB zip · Apple Silicon + Intel</p>
 						<a class="btn btn-dl" id="dl-mac"
 							href="https://github.com/hikalkan/noname-soccer/releases/latest/download/NonameSoccer-macos.zip"
 							data-i18n="dl_mac_btn">Download for macOS</a>
@@ -178,7 +196,7 @@
 					</li>
 					<li>
 						<h3 data-i18n="phil_5_t">No hidden modifiers</h3>
-						<p data-i18n="phil_5_b">No momentum scripting or home advantage. Rain only makes the ball a touch slower, for both sides alike.</p>
+						<p data-i18n="phil_5_b">No momentum scripting or home advantage. Rain only lets the ball run a touch further and bounce a touch lower, for both sides alike.</p>
 					</li>
 					<li>
 						<h3 data-i18n="phil_6_t">Small control set</h3>
@@ -194,7 +212,7 @@
 		<div class="wrap foot-inner">
 			<p data-i18n="foot_line">Independent arcade football. Original team names only — no real clubs or players.</p>
 			<p class="foot-meta">
-				<span><span data-i18n="version">Version</span> <span class="version-num">0.1.8</span></span>
+				<span><span data-i18n="version">Version</span> <span class="version-num">0.1.9</span></span>
 				<span data-i18n="foot_fonts">Fonts: Russo One &amp; Barlow (OFL).</span>
 				<a href="https://github.com/hikalkan/noname-soccer" rel="noopener">GitHub</a>
 			</p>

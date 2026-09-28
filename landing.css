@@ -165,16 +165,14 @@ a {
 }
 
 .logo {
-	margin: 0;
-	font-family: "Russo One", sans-serif;
-	font-size: clamp(2.6rem, 9vw, 5.4rem);
-	line-height: 0.95;
-	letter-spacing: 0.02em;
-	color: var(--yellow-hot);
-	text-shadow:
-		3px 3px 0 #111,
-		0 0 40px rgba(245, 213, 71, 0.25);
-	transform: skewX(-4deg);
+	margin: 0 0 0.2rem -0.4rem;
+	line-height: 0;
+}
+.logo img {
+	display: block;
+	width: min(560px, 86vw);
+	height: auto;
+	filter: drop-shadow(0 6px 24px rgba(0, 0, 0, 0.45));
 }
 
 .tagline {
