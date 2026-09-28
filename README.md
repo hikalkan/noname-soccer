@@ -2,8 +2,8 @@
 
 **Play football. Don't manage it.**
 
-Arcade-style 11 v 11 soccer — full pitch, cute players, honest rules.
-No attributes, no stamina bars, no tactics sliders. Just the match.
+Free arcade-style 11 v 11 soccer — full pitch, cute players, honest rules.
+No attributes, no stamina bars, no tactics sliders. Just the match. No account needed.
 
 <p align="center">
   <img src="img/hero.jpg" alt="Noname Soccer — night match, full pitch" width="900">
@@ -17,15 +17,19 @@ No attributes, no stamina bars, no tactics sliders. Just the match.
   <a href="https://github.com/hikalkan/noname-soccer/releases/latest"><strong>Download</strong></a>
 </p>
 
+## Trailer
+
+[![Noname Soccer trailer](https://img.youtube.com/vi/QYXzcTqLVG0/hqdefault.jpg)](https://www.youtube.com/watch?v=QYXzcTqLVG0)
+
 ## Screenshots
 
-| Goal | Walkout | Free kick |
+| Match view | Free kick | Goal cut-ins |
 |:---:|:---:|:---:|
-| ![Goal](img/goal.jpg) | ![Walkout](img/walkout.jpg) | ![Free kick](img/free_kick.jpg) |
+| ![Match view](img/match.jpg) | ![Free kick](img/free_kick.jpg) | ![Goal cut-ins](img/goal.jpg) |
 
-| Close camera | Night | Rain |
+| Retro celebrations | Penalty shootout | Snow |
 |:---:|:---:|:---:|
-| ![Close](img/close.jpg) | ![Night](img/night.jpg) | ![Rain](img/rain.jpg) |
+| ![Retro celebrations](img/train.jpg) | ![Penalty shootout](img/shootout.jpg) | ![Snow](img/snow.jpg) |
 
 ## Play
 
@@ -54,9 +58,9 @@ The only edge is playing better. Nothing in a menu puts anyone ahead before kick
 
 - **Equal players** — no pace, shooting, or height stats; shirt numbers 1–11 are identity only
 - **No condition systems** — no stamina, form, morale, or injuries that change the match
-- **No progression** — no XP, levels, or upgrades
+- **No progression, no pay-to-win** — no XP, levels, or upgrades, and nothing to buy that helps you win
 - **No tactics management** — a few balanced formations, locked for the match
-- **No hidden modifiers** — no momentum scripting, home advantage, or weather physics
+- **No hidden modifiers** — no momentum scripting or home advantage; rain only makes the ball run a touch further and bounce a touch lower, for both sides
 - **Small control set** — move, pass, through, lob, shoot, skill, switch
 
 Difficulty only changes how well the CPU decides — never the physics, never your teammates.
@@ -70,9 +74,9 @@ Difficulty only changes how well the CPU decides — never the physics, never yo
 | Pass | S | A |
 | Through pass | W | Y |
 | Lob / slide | A | X |
-| Skill / shield | Q | RB |
-| Switch player | Q | LB |
-| Camera | L | — |
+| Skill / shield (with the ball) | Q | RB |
+| Switch player (without the ball) | Q | LB |
+| Camera | L | Back / View |
 | Pause | Esc / P | Start |
 
 Couch 2P: P1 keyboard (or pad), P2 gamepad. Full list is in the in-game **How to Play** screen.
