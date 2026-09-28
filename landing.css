@@ -108,6 +108,28 @@ a {
 	color: var(--yellow);
 }
 
+.top-nav {
+	display: flex;
+	gap: 1.25rem;
+	margin-left: auto;
+	margin-right: 1.25rem;
+}
+.top-nav a {
+	color: var(--muted);
+	font-weight: 700;
+	font-size: 0.92rem;
+	text-decoration: none;
+}
+.top-nav a:hover,
+.top-nav a:focus-visible {
+	color: var(--yellow);
+}
+@media (max-width: 600px) {
+	.top-nav {
+		display: none;
+	}
+}
+
 .lang {
 	display: flex;
 	gap: 0.35rem;
@@ -191,8 +213,58 @@ a {
 .cta-row {
 	display: flex;
 	flex-wrap: wrap;
+	align-items: center;
 	gap: 0.75rem;
 	margin-top: 1.6rem;
+}
+
+.trailer-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45rem;
+	margin-left: 0.4rem;
+	color: #fff;
+	font-weight: 700;
+	text-decoration: none;
+}
+.trailer-link-icon {
+	display: inline-grid;
+	place-items: center;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	border: 2px solid rgba(255, 255, 255, 0.5);
+	font-size: 0.7rem;
+	padding-left: 0.12rem;
+	transition: border-color 0.15s ease, color 0.15s ease;
+}
+.trailer-link:hover,
+.trailer-link:focus-visible {
+	color: var(--yellow);
+}
+.trailer-link:hover .trailer-link-icon,
+.trailer-link:focus-visible .trailer-link-icon {
+	border-color: var(--yellow);
+}
+
+.free-line {
+	margin: 1.1rem 0 0;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+	color: var(--ink);
+	font-size: 0.98rem;
+}
+.free-badge {
+	padding: 0.2rem 0.65rem;
+	border-radius: 999px;
+	background: var(--pitch-bright);
+	color: #fff;
+	font-family: "Russo One", sans-serif;
+	font-size: 0.8rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
 }
 
 .btn {
@@ -302,7 +374,8 @@ a {
 
 /* Wide frame so YouTube is more likely to pick 720p+ (quality is not forceable via API). */
 .trailer-wrap {
-	max-width: min(1600px, calc(100% - 2rem));
+	width: min(1600px, calc(100% - 2rem));
+	margin-inline: auto;
 }
 
 .trailer-frame {
@@ -493,7 +566,7 @@ a {
 	color: #d7e6ff;
 }
 
-.philosophy {
+.controls {
 	padding-bottom: 5rem;
 }
 
@@ -571,19 +644,25 @@ a {
 	border: 0;
 	padding: 0;
 	margin: auto;
-	max-width: min(1100px, calc(100vw - 2rem));
-	width: min(1100px, calc(100vw - 2rem));
+	max-width: min(1180px, calc(100vw - 1rem));
+	width: min(1180px, calc(100vw - 1rem));
 	background: transparent;
 	color: #fff;
 	overflow: visible;
+	display: flex;
+	align-items: center;
+	gap: 0.55rem;
 }
 .lightbox::backdrop {
 	background: rgba(0, 0, 0, 0.82);
 }
+.lightbox[open] {
+	display: flex;
+}
 .lb-frame {
 	position: relative;
-	width: 100%;
-	max-width: 100%;
+	flex: 1 1 auto;
+	min-width: 0;
 	overflow: hidden;
 	border-radius: 12px;
 }
@@ -622,6 +701,41 @@ a {
 	line-height: 1;
 	cursor: pointer;
 	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+}
+.lb-nav {
+	flex: 0 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.75rem;
+	height: 2.75rem;
+	padding: 0;
+	border: 0;
+	border-radius: 999px;
+	background: rgba(11, 22, 40, 0.88);
+	border: 1px solid rgba(255, 255, 255, 0.22);
+	color: #fff;
+	font-size: 1.85rem;
+	line-height: 1;
+	cursor: pointer;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+	transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.lb-nav:hover,
+.lb-nav:focus-visible {
+	background: var(--yellow);
+	border-color: var(--yellow);
+	color: #111;
+}
+@media (max-width: 560px) {
+	.lightbox {
+		gap: 0.3rem;
+	}
+	.lb-nav {
+		width: 2.2rem;
+		height: 2.2rem;
+		font-size: 1.5rem;
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {

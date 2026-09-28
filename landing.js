@@ -3,30 +3,35 @@
 
 	var I18N = {
 		tr: {
+			page_title: "Noname Soccer — Ücretsiz arcade futbol",
+			meta_desc: "Ücretsiz arcade 11v11 futbol. Futbol oyna, yönetme. Tarayıcıda veya Windows ve macOS'ta, hesap gerekmez.",
 			skip: "İçeriğe atla",
+			nav_trailer: "Fragman",
+			nav_download: "İndir",
+			nav_controls: "Kontroller",
 			eyebrow: "Arcade 11 v 11",
 			tagline: "Futbol oyna. Yönetme.",
 			lede: "Tam saha, sevimli oyuncular, düzgün kurallar. Özellik yok, stamina çubuğu yok, taktik kaydırıcısı yok — sadece maç.",
 			cta_play: "Tarayıcıda oyna",
 			cta_download: "İndir",
+			cta_trailer: "Fragmanı izle",
+			free_badge: "Ücretsiz",
+			free_note: "Hesap gerekmez — hemen oyna.",
 			mobile_note: "En iyisi masaüstünde klavye veya gamepad ile.",
 			version: "Sürüm",
 			dl_version: "Son sürüm",
 			trailer_title: "Fragman",
 			trailer_lead: "Saha, oyuncular ve arcade maç gününe kısa bir bakış.",
 			shots_title: "Sahada",
-			shots_lead: "Çıkış töreni, gol ara ekranları, tren sevinci, kar ve projektörler — bir arcade paketinde bütün maç günü.",
-			cap_goal: "Gol",
-			cap_walkout: "Çıkış",
-			cap_train: "Tren sevinci",
-			cap_kits: "Forma desenleri",
+			shots_lead: "Gol ara ekranları, nostaljik sevinçler, penaltı atışları ve kar — bir arcade paketinde bütün maç günü.",
+			cap_match: "Maç görünümü",
 			cap_free_kick: "Serbest vuruş",
-			cap_close: "Yakın kamera",
-			cap_night: "Gece maçı",
+			cap_goal: "Gol ara ekranları",
+			cap_train: "Nostaljik sevinçler",
+			cap_shootout: "Penaltı atışları",
 			cap_snow: "Kar",
-			cap_pitch_side: "Maskot ve taraftar",
 			dl_title: "İndir",
-			dl_lead: "Taşınabilir sürümler — zip'i aç ve oyna. Kurulum yok. Ayarlar kullanıcı profilinde kalır.",
+			dl_lead: "Ücretsiz taşınabilir sürümler — zip'i aç ve oyna. Kurulum yok. Ayarlar kullanıcı profilinde kalır.",
 			dl_win_meta: "x64 · ~95 MB zip · tek .exe",
 			dl_win_btn: "Windows için indir",
 			dl_win_1: "Herhangi bir yere aç ve NonameSoccer.exe'yi çalıştır.",
@@ -48,17 +53,18 @@
 			ctl_pass: "Pas",
 			ctl_through: "Ara pas",
 			ctl_lob: "Lob / kayma",
-			ctl_skill: "Skill / kalkan",
-			ctl_switch: "Oyuncu değiştir",
+			ctl_skill: "Skill / kalkan (top sendeyken)",
+			ctl_switch: "Oyuncu değiştir (top sende değilken)",
 			ctl_cam: "Kamera",
+			ctl_pause: "Duraklat",
 			phil_title: "Futbol oyna, yönetme",
 			phil_lead: "Tek üstünlük daha iyi oynamaktır. Hiçbir menü ayarı veya meta-strateji başlamadan önce kimseyi önde bırakmaz.",
 			phil_1_t: "Herkes eşit",
 			phil_1_b: "Hız, şut veya boy istatistiği yok. Forma numaraları 1–11 yalnızca kimlik.",
 			phil_2_t: "Kondisyon sistemi yok",
 			phil_2_b: "Maçı değiştiren stamina, form, moral veya sakatlık yok.",
-			phil_3_t: "İlerleme yok",
-			phil_3_b: "XP, seviye veya yükseltme yok. Uzun süre oynayan daha iyi oynadığı için daha iyidir.",
+			phil_3_t: "İlerleme yok, parayla üstünlük yok",
+			phil_3_b: "XP, seviye veya yükseltme yok; kazanmana yardım eden satılık hiçbir şey yok. Uzun süre oynayan daha iyi oynadığı için daha iyidir.",
 			phil_4_t: "Taktik yönetimi yok",
 			phil_4_b: "Kaydırıcı veya talimat yok. Birkaç dengeli diziliş, maç için kilitli.",
 			phil_5_t: "Gizli etki yok",
@@ -66,35 +72,42 @@
 			phil_6_t: "Küçük kontrol seti",
 			phil_6_b: "Hareket, pas, ara pas, lob, şut, skill, değiştir. Başlık → takım seç → başla.",
 			phil_diff: "Zorluk yalnızca CPU'nun ne kadar iyi karar verdiğini değiştirir — fiziği değil, takım arkadaşlarını değil.",
-			foot_line: "Bağımsız arcade futbol. Yalnızca özgün takım adları — gerçek kulüp veya oyuncu yok.",
+			foot_line: "Ücretsiz, bağımsız arcade futbol. Yalnızca özgün takım adları — gerçek kulüp veya oyuncu yok.",
 			foot_fonts: "Fontlar: Russo One ve Barlow (OFL).",
-			copied: "Kopyalandı"
+			copied: "Kopyalandı",
+			lb_prev: "Önceki ekran görüntüsü",
+			lb_next: "Sonraki ekran görüntüsü"
 		},
 		en: {
+			page_title: "Noname Soccer — Free arcade football",
+			meta_desc: "Free arcade 11v11 soccer. Play football, don't manage it. In the browser or on Windows and macOS, no account needed.",
 			skip: "Skip to content",
+			nav_trailer: "Trailer",
+			nav_download: "Download",
+			nav_controls: "Controls",
 			eyebrow: "Arcade 11 v 11",
 			tagline: "Play football. Don't manage it.",
 			lede: "Full pitch, cute players, honest rules. No attributes, no stamina bars, no tactics sliders — just the match.",
 			cta_play: "Play in browser",
 			cta_download: "Download",
+			cta_trailer: "Watch the trailer",
+			free_badge: "Free",
+			free_note: "No account needed — just play.",
 			mobile_note: "Best on desktop with keyboard or gamepad.",
 			version: "Version",
 			dl_version: "Latest version",
 			trailer_title: "Trailer",
 			trailer_lead: "A quick look at the pitch, the players, and the arcade match day.",
 			shots_title: "On the pitch",
-			shots_lead: "Walkouts, goal cut-ins, train celebrations, snow and floodlights — the whole match day in one arcade package.",
-			cap_goal: "Goal",
-			cap_walkout: "Walkout",
-			cap_train: "Train celebration",
-			cap_kits: "Kit patterns",
+			shots_lead: "Goal cut-ins, retro celebrations, penalty shootouts and snow — the whole match day in one arcade package.",
+			cap_match: "Match view",
 			cap_free_kick: "Free kick",
-			cap_close: "Close camera",
-			cap_night: "Night match",
+			cap_goal: "Goal cut-ins",
+			cap_train: "Retro celebrations",
+			cap_shootout: "Penalty shootout",
 			cap_snow: "Snow",
-			cap_pitch_side: "Mascot and fans",
 			dl_title: "Download",
-			dl_lead: "Portable builds — unzip and play. No installer. Settings live in your user profile.",
+			dl_lead: "Free portable builds — unzip and play. No installer. Settings live in your user profile.",
 			dl_win_meta: "x64 · ~95 MB zip · single .exe",
 			dl_win_btn: "Download for Windows",
 			dl_win_1: "Unzip anywhere and run NonameSoccer.exe.",
@@ -116,17 +129,18 @@
 			ctl_pass: "Pass",
 			ctl_through: "Through pass",
 			ctl_lob: "Lob / slide",
-			ctl_skill: "Skill / shield",
-			ctl_switch: "Switch player",
+			ctl_skill: "Skill / shield (with the ball)",
+			ctl_switch: "Switch player (without the ball)",
 			ctl_cam: "Camera",
+			ctl_pause: "Pause",
 			phil_title: "Play football, don't manage it",
 			phil_lead: "The only edge is playing better. No menu setting or meta-strategy puts anyone ahead before kickoff.",
 			phil_1_t: "Equal players",
 			phil_1_b: "No pace, shooting or height stats. Shirt numbers 1–11 are identity only.",
 			phil_2_t: "No condition systems",
 			phil_2_b: "No stamina, form, morale or injuries that change how the match plays.",
-			phil_3_t: "No progression",
-			phil_3_b: "No XP, levels or upgrades. A long-time player is better only because they play better.",
+			phil_3_t: "No progression, no pay-to-win",
+			phil_3_b: "No XP, levels or upgrades, and nothing to buy that helps you win. A long-time player is better only because they play better.",
 			phil_4_t: "No tactics management",
 			phil_4_b: "No sliders or instructions. A few balanced formations, locked for the match.",
 			phil_5_t: "No hidden modifiers",
@@ -134,9 +148,11 @@
 			phil_6_t: "Small control set",
 			phil_6_b: "Move, pass, through, lob, shoot, skill, switch. Title → pick teams → kick off.",
 			phil_diff: "Difficulty only changes how well the CPU decides — never the physics, never your teammates.",
-			foot_line: "Independent arcade football. Original team names only — no real clubs or players.",
+			foot_line: "Free, independent arcade football. Original team names only — no real clubs or players.",
 			foot_fonts: "Fonts: Russo One & Barlow (OFL).",
-			copied: "Copied"
+			copied: "Copied",
+			lb_prev: "Previous screenshot",
+			lb_next: "Next screenshot"
 		}
 	};
 
@@ -164,12 +180,17 @@
 			var key = el.getAttribute("data-i18n");
 			if (dict[key] != null) el.textContent = dict[key];
 		});
+		document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
+			var key = el.getAttribute("data-i18n-aria");
+			if (dict[key] != null) el.setAttribute("aria-label", dict[key]);
+		});
 		document.querySelectorAll(".lang-btn").forEach(function (btn) {
 			btn.setAttribute("aria-pressed", btn.getAttribute("data-lang") === lang ? "true" : "false");
 		});
 		try { localStorage.setItem(LANG_KEY, lang); } catch (e) { /* ignore */ }
+		if (dict.page_title) document.title = dict.page_title;
 		var meta = document.querySelector('meta[name="description"]');
-		if (meta) meta.setAttribute("content", "Noname Soccer — " + (dict.lede || ""));
+		if (meta && dict.meta_desc) meta.setAttribute("content", dict.meta_desc);
 	}
 
 	function setupLang() {
@@ -198,18 +219,58 @@
 		var dlg = document.getElementById("lightbox");
 		var img = document.getElementById("lb-img");
 		var cap = document.getElementById("lb-cap");
+		var prevBtn = document.getElementById("lb-prev");
+		var nextBtn = document.getElementById("lb-next");
 		if (!dlg || !img) return;
 
-		document.querySelectorAll(".shot").forEach(function (btn) {
+		var shots = Array.prototype.slice.call(document.querySelectorAll(".shot"));
+		var index = 0;
+
+		function showAt(i) {
+			if (!shots.length) return;
+			index = (i + shots.length) % shots.length;
+			var btn = shots[index];
+			var full = btn.getAttribute("data-full");
+			var key = btn.getAttribute("data-caption-key");
+			var dict = I18N[lang] || I18N.en;
+			img.src = full;
+			img.alt = dict[key] || "";
+			cap.textContent = dict[key] || "";
+		}
+
+		function openAt(i) {
+			showAt(i);
+			if (typeof dlg.showModal === "function") dlg.showModal();
+		}
+
+		shots.forEach(function (btn, i) {
 			btn.addEventListener("click", function () {
-				var full = btn.getAttribute("data-full");
-				var key = btn.getAttribute("data-caption-key");
-				var dict = I18N[lang] || I18N.en;
-				img.src = full;
-				img.alt = dict[key] || "";
-				cap.textContent = dict[key] || "";
-				if (typeof dlg.showModal === "function") dlg.showModal();
+				openAt(i);
 			});
+		});
+
+		if (prevBtn) {
+			prevBtn.addEventListener("click", function (ev) {
+				ev.stopPropagation();
+				showAt(index - 1);
+			});
+		}
+		if (nextBtn) {
+			nextBtn.addEventListener("click", function (ev) {
+				ev.stopPropagation();
+				showAt(index + 1);
+			});
+		}
+
+		dlg.addEventListener("keydown", function (ev) {
+			if (!dlg.open) return;
+			if (ev.key === "ArrowLeft") {
+				ev.preventDefault();
+				showAt(index - 1);
+			} else if (ev.key === "ArrowRight") {
+				ev.preventDefault();
+				showAt(index + 1);
+			}
 		});
 
 		dlg.addEventListener("click", function (ev) {
