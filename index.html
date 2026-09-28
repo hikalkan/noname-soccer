@@ -39,7 +39,7 @@
 				<p class="tagline" data-i18n="tagline">Play football. Don't manage it.</p>
 				<p class="lede" data-i18n="lede">Full pitch, cute players, honest rules. No attributes, no stamina bars, no tactics sliders — just the match.</p>
 				<div class="cta-row">
-					<a class="btn btn-play" href="play/" data-i18n="cta_play">Play in browser</a>
+					<a class="btn btn-play" href="play/" data-play-link data-i18n="cta_play">Try in browser</a>
 					<a class="btn btn-ghost" href="#download" data-i18n="cta_download">Download</a>
 					<a class="trailer-link" href="#trailer"><span class="trailer-link-icon" aria-hidden="true">&#9654;</span> <span data-i18n="cta_trailer">Watch the trailer</span></a>
 				</div>
@@ -181,7 +181,7 @@
 				</div>
 				<p class="dl-browser">
 					<span data-i18n="dl_or">Prefer zero install?</span>
-					<a href="play/" data-i18n="dl_browser_link">Play in the browser</a>
+					<a href="play/" data-play-link data-i18n="dl_browser_link">Try it in the browser</a>
 				</p>
 			</div>
 		</section>
@@ -237,6 +237,33 @@
 			<p id="lb-cap" class="lb-cap"></p>
 		</div>
 		<button type="button" class="lb-nav lb-next" id="lb-next" data-i18n-aria="lb_next" aria-label="Next screenshot">&#8250;</button>
+	</dialog>
+
+	<dialog id="play-warn" class="play-warn" aria-labelledby="pw-title">
+		<form method="dialog" class="pw-close-form">
+			<button type="submit" class="lb-close" data-i18n-aria="pw_close" aria-label="Close">&times;</button>
+		</form>
+		<div class="pw-desktop">
+			<h2 id="pw-title" data-i18n="pw_title">The browser version runs slower</h2>
+			<p data-i18n="pw_body">For the smoothest match, download the free desktop build. You can still play in the browser, but the frame rate may drop.</p>
+			<div class="pw-actions">
+				<a class="btn btn-play pw-dl" id="pw-dl-win" data-os="windows"
+					href="https://github.com/hikalkan/noname-soccer/releases/latest/download/NonameSoccer-windows-x64.zip"
+					data-i18n="dl_win_btn">Download for Windows</a>
+				<a class="btn btn-play pw-dl" id="pw-dl-mac" data-os="mac"
+					href="https://github.com/hikalkan/noname-soccer/releases/latest/download/NonameSoccer-macos.zip"
+					data-i18n="dl_mac_btn">Download for macOS</a>
+				<a class="btn btn-ghost" id="pw-continue" href="play/" data-i18n="pw_continue">Play in the browser anyway</a>
+			</div>
+			<p class="pw-more"><a href="#download" id="pw-all" data-i18n="pw_all">All download options</a></p>
+		</div>
+		<div class="pw-mobile">
+			<h2 data-i18n="pw_mobile_title">Best played on a desktop</h2>
+			<p data-i18n="pw_mobile_body">Noname Soccer needs a keyboard or gamepad and runs slowly on phones and tablets. Open this page on a computer to play.</p>
+			<div class="pw-actions">
+				<a class="btn btn-ghost" id="pw-continue-mobile" href="play/" data-i18n="pw_try_anyway">Try anyway</a>
+			</div>
+		</div>
 	</dialog>
 
 	<script src="landing.js" defer></script>

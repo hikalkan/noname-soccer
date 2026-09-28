@@ -737,6 +737,57 @@ a {
 	}
 }
 
+.play-warn {
+	position: relative;
+	width: min(560px, calc(100vw - 2rem));
+	margin: auto;
+	padding: 1.6rem 1.6rem 1.4rem;
+	border: 1px solid var(--line);
+	border-radius: calc(var(--radius) + 4px);
+	background: var(--navy-2);
+	color: var(--ink);
+	box-shadow: var(--shadow);
+}
+.play-warn::backdrop {
+	background: rgba(0, 0, 0, 0.75);
+}
+.play-warn h2 {
+	margin: 0 2.5rem 0.6rem 0;
+	font-family: "Russo One", sans-serif;
+	font-size: 1.35rem;
+	color: var(--yellow);
+}
+.play-warn p {
+	margin: 0;
+	color: var(--muted);
+}
+.pw-close-form {
+	position: absolute;
+	top: 0.8rem;
+	right: 0.8rem;
+	margin: 0;
+}
+.pw-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.65rem;
+	margin-top: 1.3rem;
+}
+.pw-dl[hidden] {
+	display: none;
+}
+.play-warn .pw-more {
+	margin-top: 1rem;
+	font-size: 0.92rem;
+}
+.play-warn .pw-more a {
+	font-weight: 700;
+}
+.play-warn.is-mobile .pw-desktop,
+.play-warn.is-desktop .pw-mobile {
+	display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto;

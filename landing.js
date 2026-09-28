@@ -12,7 +12,7 @@
 			eyebrow: "Arcade 11 v 11",
 			tagline: "Futbol oyna. Yönetme.",
 			lede: "Tam saha, sevimli oyuncular, düzgün kurallar. Özellik yok, stamina çubuğu yok, taktik kaydırıcısı yok — sadece maç.",
-			cta_play: "Tarayıcıda oyna",
+			cta_play: "Tarayıcıda dene",
 			cta_download: "İndir",
 			cta_trailer: "Fragmanı izle",
 			free_badge: "Ücretsiz",
@@ -42,7 +42,7 @@
 			dl_mac_2: "macOS bozuk derse Terminal'de şunu çalıştır:",
 			copy: "Kopyala",
 			dl_or: "Kurulum istemiyor musun?",
-			dl_browser_link: "Tarayıcıda oyna",
+			dl_browser_link: "Tarayıcıda dene",
 			ctl_title: "Kontroller",
 			ctl_lead: "Küçük bir set. Klavye ve gamepad'de aynı eylemler.",
 			ctl_action: "Eylem",
@@ -76,7 +76,15 @@
 			foot_fonts: "Fontlar: Russo One ve Barlow (OFL).",
 			copied: "Kopyalandı",
 			lb_prev: "Önceki ekran görüntüsü",
-			lb_next: "Sonraki ekran görüntüsü"
+			lb_next: "Sonraki ekran görüntüsü",
+			pw_title: "Tarayıcı sürümü daha yavaş",
+			pw_body: "En akıcı maç için ücretsiz masaüstü sürümünü indir. Tarayıcıda da oynayabilirsin ama kare hızı düşebilir.",
+			pw_continue: "Yine de tarayıcıda oyna",
+			pw_all: "Tüm indirme seçenekleri",
+			pw_close: "Kapat",
+			pw_mobile_title: "En iyisi masaüstünde",
+			pw_mobile_body: "Noname Soccer klavye veya gamepad ister ve telefon ile tablette yavaş çalışır. Oynamak için bu sayfayı bir bilgisayarda aç.",
+			pw_try_anyway: "Yine de dene"
 		},
 		en: {
 			page_title: "Noname Soccer — Free arcade football",
@@ -88,7 +96,7 @@
 			eyebrow: "Arcade 11 v 11",
 			tagline: "Play football. Don't manage it.",
 			lede: "Full pitch, cute players, honest rules. No attributes, no stamina bars, no tactics sliders — just the match.",
-			cta_play: "Play in browser",
+			cta_play: "Try in browser",
 			cta_download: "Download",
 			cta_trailer: "Watch the trailer",
 			free_badge: "Free",
@@ -118,7 +126,7 @@
 			dl_mac_2: "If macOS says it is damaged, run this in Terminal:",
 			copy: "Copy",
 			dl_or: "Prefer zero install?",
-			dl_browser_link: "Play in the browser",
+			dl_browser_link: "Try it in the browser",
 			ctl_title: "Controls",
 			ctl_lead: "A small set. Same actions on keyboard and gamepad.",
 			ctl_action: "Action",
@@ -152,7 +160,15 @@
 			foot_fonts: "Fonts: Russo One & Barlow (OFL).",
 			copied: "Copied",
 			lb_prev: "Previous screenshot",
-			lb_next: "Next screenshot"
+			lb_next: "Next screenshot",
+			pw_title: "The browser version runs slower",
+			pw_body: "For the smoothest match, download the free desktop build. You can still play in the browser, but the frame rate may drop.",
+			pw_continue: "Play in the browser anyway",
+			pw_all: "All download options",
+			pw_close: "Close",
+			pw_mobile_title: "Best played on a desktop",
+			pw_mobile_body: "Noname Soccer needs a keyboard or gamepad and runs slowly on phones and tablets. Open this page on a computer to play.",
+			pw_try_anyway: "Try anyway"
 		}
 	};
 
@@ -202,11 +218,22 @@
 		applyLang(detectLang());
 	}
 
-	function setupOsHighlight() {
+	function detectOs() {
 		var ua = navigator.userAgent || "";
-		var os = /Mac|iPhone|iPad|iPod/i.test(ua) ? "mac"
+		return /Mac|iPhone|iPad|iPod/i.test(ua) ? "mac"
 			: /Win/i.test(ua) ? "windows"
 			: null;
+	}
+
+	function isMobile() {
+		var ua = navigator.userAgent || "";
+		if (/Android|iPhone|iPad|iPod|Mobile/i.test(ua)) return true;
+		// iPadOS reports itself as a Mac.
+		return /Mac/i.test(ua) && navigator.maxTouchPoints > 1;
+	}
+
+	function setupOsHighlight() {
+		var os = detectOs();
 		if (!os) return;
 		document.querySelectorAll(".dl-card").forEach(function (card) {
 			if (card.getAttribute("data-os") === os) {
@@ -278,6 +305,55 @@
 		});
 	}
 
+	var PLAY_WARNED_KEY = "noname-soccer-play-warned";
+
+	function setupPlayWarning() {
+		var dlg = document.getElementById("play-warn");
+		if (!dlg || typeof dlg.showModal !== "function") return;
+
+		var mobile = isMobile();
+		dlg.classList.add(mobile ? "is-mobile" : "is-desktop");
+
+		var os = detectOs();
+		if (!mobile && os) {
+			dlg.querySelectorAll(".pw-dl").forEach(function (a) {
+				if (a.getAttribute("data-os") !== os) a.hidden = true;
+			});
+		}
+
+		function warned() {
+			try { return localStorage.getItem(PLAY_WARNED_KEY) === "1"; } catch (e) { return false; }
+		}
+		function rememberContinue() {
+			try { localStorage.setItem(PLAY_WARNED_KEY, "1"); } catch (e) { /* ignore */ }
+		}
+
+		document.querySelectorAll("[data-play-link]").forEach(function (link) {
+			link.addEventListener("click", function (ev) {
+				// New-tab clicks and returning visitors go straight to the game.
+				if (ev.button !== 0 || ev.ctrlKey || ev.metaKey || ev.shiftKey || ev.altKey) return;
+				if (warned()) return;
+				ev.preventDefault();
+				dlg.showModal();
+			});
+		});
+
+		["pw-continue", "pw-continue-mobile"].forEach(function (id) {
+			var a = document.getElementById(id);
+			if (a) a.addEventListener("click", rememberContinue);
+		});
+
+		var all = document.getElementById("pw-all");
+		if (all) all.addEventListener("click", function () { dlg.close(); });
+		dlg.querySelectorAll(".pw-dl").forEach(function (a) {
+			a.addEventListener("click", function () { dlg.close(); });
+		});
+
+		dlg.addEventListener("click", function (ev) {
+			if (ev.target === dlg) dlg.close();
+		});
+	}
+
 	function setupCopy() {
 		var btn = document.getElementById("copy-xattr");
 		var code = document.getElementById("xattr-cmd");
@@ -339,6 +415,7 @@
 	hideUnstampedVersion();
 	setupOsHighlight();
 	setupLightbox();
+	setupPlayWarning();
 	setupCopy();
 	cleanupRootServiceWorker();
 }());
