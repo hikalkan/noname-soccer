@@ -13,8 +13,9 @@
 	<meta name="twitter:card" content="summary_large_image">
 	<link rel="icon" href="favicon.svg" type="image/svg+xml">
 	<link rel="stylesheet" href="landing.css">
+	<script src="analytics.js"></script>
 </head>
-<body>
+<body data-page="home">
 	<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
 
 	<header class="top">
@@ -39,7 +40,7 @@
 				<p class="tagline" data-i18n="tagline">Play football. Don't manage it.</p>
 				<p class="lede" data-i18n="lede">Full pitch, cute players, honest rules. No attributes, no stamina bars, no tactics sliders — just the match.</p>
 				<div class="cta-row">
-					<a class="btn btn-play" href="play/" data-play-link data-i18n="cta_play">Try in browser</a>
+					<a class="btn btn-play" href="play/" data-play-link="hero" data-i18n="cta_play">Try in browser</a>
 					<a class="btn btn-ghost" href="#download" data-i18n="cta_download">Download</a>
 					<a class="trailer-link" href="#trailer"><span class="trailer-link-icon" aria-hidden="true">&#9654;</span> <span data-i18n="cta_trailer">Watch the trailer</span></a>
 				</div>
@@ -181,7 +182,7 @@
 				</div>
 				<p class="dl-browser">
 					<span data-i18n="dl_or">Prefer zero install?</span>
-					<a href="play/" data-play-link data-i18n="dl_browser_link">Try it in the browser</a>
+					<a href="play/" data-play-link="download_section" data-i18n="dl_browser_link">Try it in the browser</a>
 				</p>
 			</div>
 		</section>
@@ -223,6 +224,8 @@
 				<span><span data-i18n="version">Version</span> <span class="version-num">0.1.9</span></span>
 				<span data-i18n="foot_fonts">Fonts: Russo One &amp; Barlow (OFL).</span>
 				<a href="https://github.com/hikalkan/noname-soccer" rel="noopener">GitHub</a>
+				<a href="privacy.html" data-i18n="foot_privacy">Privacy</a>
+				<a href="terms.html" data-i18n="foot_terms">Terms</a>
 			</p>
 		</div>
 	</footer>

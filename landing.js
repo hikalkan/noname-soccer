@@ -84,7 +84,15 @@
 			pw_close: "Kapat",
 			pw_mobile_title: "En iyisi masaüstünde",
 			pw_mobile_body: "Noname Soccer klavye veya gamepad ister ve telefon ile tablette yavaş çalışır. Oynamak için bu sayfayı bir bilgisayarda aç.",
-			pw_try_anyway: "Yine de dene"
+			pw_try_anyway: "Yine de dene",
+			page_title_privacy: "Gizlilik Politikası — Noname Soccer",
+			page_title_terms: "Kullanım Koşulları — Noname Soccer",
+			nav_home: "Ana sayfa",
+			foot_privacy: "Gizlilik",
+			foot_terms: "Koşullar",
+			cookie_text: "Bu site ziyaret istatistikleri için Google Analytics çerezleri kullanır.",
+			cookie_link: "Ayrıntılar: Gizlilik Politikası",
+			cookie_ok: "Tamam"
 		},
 		en: {
 			page_title: "Noname Soccer — Free arcade football",
@@ -168,9 +176,23 @@
 			pw_close: "Close",
 			pw_mobile_title: "Best played on a desktop",
 			pw_mobile_body: "Noname Soccer needs a keyboard or gamepad and runs slowly on phones and tablets. Open this page on a computer to play.",
-			pw_try_anyway: "Try anyway"
+			pw_try_anyway: "Try anyway",
+			page_title_privacy: "Privacy Policy — Noname Soccer",
+			page_title_terms: "Terms of Use — Noname Soccer",
+			nav_home: "Home",
+			foot_privacy: "Privacy",
+			foot_terms: "Terms",
+			cookie_text: "This site uses Google Analytics cookies for visit statistics.",
+			cookie_link: "Details: Privacy Policy",
+			cookie_ok: "OK"
 		}
 	};
+
+	var PAGE = document.body.getAttribute("data-page") || "home";
+
+	function track(name, params) {
+		if (typeof window.gtag === "function") window.gtag("event", name, params || {});
+	}
 
 	var LANG_KEY = "noname-soccer-lang";
 	var lang = "en";
@@ -203,10 +225,14 @@
 		document.querySelectorAll(".lang-btn").forEach(function (btn) {
 			btn.setAttribute("aria-pressed", btn.getAttribute("data-lang") === lang ? "true" : "false");
 		});
+		document.querySelectorAll("[data-lang-block]").forEach(function (el) {
+			el.hidden = el.getAttribute("data-lang-block") !== lang;
+		});
 		try { localStorage.setItem(LANG_KEY, lang); } catch (e) { /* ignore */ }
-		if (dict.page_title) document.title = dict.page_title;
+		var title = dict[PAGE === "home" ? "page_title" : "page_title_" + PAGE];
+		if (title) document.title = title;
 		var meta = document.querySelector('meta[name="description"]');
-		if (meta && dict.meta_desc) meta.setAttribute("content", dict.meta_desc);
+		if (PAGE === "home" && meta && dict.meta_desc) meta.setAttribute("content", dict.meta_desc);
 	}
 
 	function setupLang() {
@@ -329,29 +355,70 @@
 		}
 
 		document.querySelectorAll("[data-play-link]").forEach(function (link) {
+			var source = link.getAttribute("data-play-link") || "unknown";
 			link.addEventListener("click", function (ev) {
 				// New-tab clicks and returning visitors go straight to the game.
-				if (ev.button !== 0 || ev.ctrlKey || ev.metaKey || ev.shiftKey || ev.altKey) return;
-				if (warned()) return;
+				if (ev.button !== 0 || ev.ctrlKey || ev.metaKey || ev.shiftKey || ev.altKey || warned()) {
+					track("play_browser", { source: source });
+					return;
+				}
 				ev.preventDefault();
+				track("play_warning_shown", { source: source });
 				dlg.showModal();
 			});
 		});
 
 		["pw-continue", "pw-continue-mobile"].forEach(function (id) {
 			var a = document.getElementById(id);
-			if (a) a.addEventListener("click", rememberContinue);
+			if (!a) return;
+			a.addEventListener("click", function () {
+				rememberContinue();
+				track("play_browser", { source: "play_warning" });
+			});
 		});
 
 		var all = document.getElementById("pw-all");
 		if (all) all.addEventListener("click", function () { dlg.close(); });
 		dlg.querySelectorAll(".pw-dl").forEach(function (a) {
-			a.addEventListener("click", function () { dlg.close(); });
+			a.addEventListener("click", function () {
+				track("download", { os: a.getAttribute("data-os"), source: "play_warning" });
+				dlg.close();
+			});
 		});
 
 		dlg.addEventListener("click", function (ev) {
 			if (ev.target === dlg) dlg.close();
 		});
+	}
+
+	function setupTracking() {
+		[["dl-win", "windows"], ["dl-mac", "mac"]].forEach(function (pair) {
+			var a = document.getElementById(pair[0]);
+			if (a) a.addEventListener("click", function () {
+				track("download", { os: pair[1], source: "download_section" });
+			});
+		});
+		document.querySelectorAll(".trailer-link").forEach(function (a) {
+			a.addEventListener("click", function () { track("trailer_link"); });
+		});
+	}
+
+	var COOKIE_OK_KEY = "noname-soccer-cookie-ok";
+
+	function setupCookieBar() {
+		try { if (localStorage.getItem(COOKIE_OK_KEY) === "1") return; } catch (e) { /* ignore */ }
+		var bar = document.createElement("div");
+		bar.className = "cookie-bar";
+		bar.setAttribute("role", "region");
+		bar.setAttribute("aria-label", "Cookies");
+		bar.innerHTML =
+			'<p><span data-i18n="cookie_text"></span> <a href="privacy.html" data-i18n="cookie_link"></a></p>' +
+			'<button type="button" class="btn btn-play cookie-ok" data-i18n="cookie_ok"></button>';
+		bar.querySelector(".cookie-ok").addEventListener("click", function () {
+			try { localStorage.setItem(COOKIE_OK_KEY, "1"); } catch (e) { /* ignore */ }
+			bar.remove();
+		});
+		document.body.appendChild(bar);
 	}
 
 	function setupCopy() {
@@ -411,11 +478,13 @@
 		});
 	}
 
+	setupCookieBar();
 	setupLang();
 	hideUnstampedVersion();
 	setupOsHighlight();
 	setupLightbox();
 	setupPlayWarning();
+	setupTracking();
 	setupCopy();
 	cleanupRootServiceWorker();
 }());
