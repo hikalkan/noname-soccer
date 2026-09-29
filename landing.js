@@ -4,9 +4,15 @@
 	var I18N = {
 		tr: {
 			page_title: "Noname Soccer — Ücretsiz arcade futbol oyunu",
-			meta_desc: "Ücretsiz, 11'e 11 arcade futbol oyunu. Menajerlik yok, sadece futbol. Tarayıcıda ya da Windows ve macOS'ta oyna; üye olmana gerek yok.",
+			meta_desc: "Ücretsiz, Türkçe spikerli 11'e 11 arcade futbol oyunu. Menajerlik yok, sadece futbol. Tarayıcıda ya da Windows ve macOS'ta oyna; üye olmana gerek yok.",
 			skip: "İçeriğe geç",
 			nav_trailer: "Fragman",
+			nav_voice: "Spiker",
+			voice_badge: "Türkçe spikerli",
+			voice_title: "Maçı spiker anlatıyor",
+			voice_lead: "Türkçe ya da İngilizce spiker maçı baştan sona anlatıyor: kaleciyle karşı karşıya kalınan pozisyonlar, direkten dönen toplar, son dakika golleri, penaltı gerilimi. Spiker dilini Ayarlar'dan, menü dilinden bağımsız olarak seçebilirsin.",
+			voice_tr: "Türkçe spiker",
+			voice_en: "İngilizce spiker",
 			nav_download: "İndir",
 			nav_controls: "Kontroller",
 			eyebrow: "Arcade · 11'e 11",
@@ -101,6 +107,12 @@
 			meta_desc: "Free arcade 11v11 soccer. Play football, don't manage it. In the browser or on Windows and macOS, no account needed.",
 			skip: "Skip to content",
 			nav_trailer: "Trailer",
+			nav_voice: "Commentary",
+			voice_badge: "Turkish commentary",
+			voice_title: "Live commentary",
+			voice_lead: "A Turkish or English announcer calls the whole match: one-on-ones, shots off the post, late winners and shootout nerves. Pick the voice in Settings, separate from the menu language.",
+			voice_tr: "Turkish commentary",
+			voice_en: "English commentary",
 			nav_download: "Download",
 			nav_controls: "Controls",
 			eyebrow: "Arcade 11 v 11",
@@ -407,6 +419,45 @@
 		});
 	}
 
+	function setupVoiceSamples() {
+		var buttons = Array.prototype.slice.call(document.querySelectorAll(".voice-play"));
+		var players = {};
+		var current = null;
+
+		function stop(btn) {
+			var a = players[btn.getAttribute("data-voice")];
+			if (a) {
+				a.pause();
+				a.currentTime = 0;
+			}
+			btn.setAttribute("aria-pressed", "false");
+			if (current === btn) current = null;
+		}
+
+		buttons.forEach(function (btn) {
+			btn.addEventListener("click", function () {
+				var id = btn.getAttribute("data-voice");
+				if (current === btn) {
+					stop(btn);
+					return;
+				}
+				if (current) stop(current);
+				var a = players[id];
+				if (!a) {
+					a = new Audio(btn.getAttribute("data-src"));
+					a.preload = "auto";
+					a.addEventListener("ended", function () { stop(btn); });
+					players[id] = a;
+				}
+				current = btn;
+				btn.setAttribute("aria-pressed", "true");
+				var p = a.play();
+				if (p && p.catch) p.catch(function () { stop(btn); });
+				track("voice_sample", { voice: id });
+			});
+		});
+	}
+
 	var COOKIE_OK_KEY = "noname-soccer-cookie-ok";
 
 	function setupCookieBar() {
@@ -489,6 +540,7 @@
 	setupLightbox();
 	setupPlayWarning();
 	setupTracking();
+	setupVoiceSamples();
 	setupCopy();
 	cleanupRootServiceWorker();
 }());
