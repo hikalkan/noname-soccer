@@ -244,6 +244,10 @@
 		document.querySelectorAll("[data-lang-block]").forEach(function (el) {
 			el.hidden = el.getAttribute("data-lang-block") !== lang;
 		});
+		document.querySelectorAll("iframe[data-video-" + lang + "]").forEach(function (frame) {
+			var src = "https://www.youtube-nocookie.com/embed/" + frame.getAttribute("data-video-" + lang) + "?rel=0&modestbranding=1";
+			if (frame.getAttribute("src") !== src) frame.setAttribute("src", src);
+		});
 		try { localStorage.setItem(LANG_KEY, lang); } catch (e) { /* ignore */ }
 		var title = dict[PAGE === "home" ? "page_title" : "page_title_" + PAGE];
 		if (title) document.title = title;
