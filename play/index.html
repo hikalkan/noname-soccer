@@ -89,6 +89,36 @@ body {
 	text-align: center;
 	z-index: 1;
 }
+
+#status-notice p {
+	margin: 0.6rem 0 0;
+}
+
+#status-notice .notice-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	justify-content: center;
+	margin-top: 1rem;
+}
+
+#status-notice button, #status-notice .notice-actions a {
+	background-color: #e0e0e0;
+	border: 0;
+	border-radius: 0.4rem;
+	color: #2a1a20;
+	cursor: pointer;
+	font: inherit;
+	font-weight: bold;
+	padding: 0.6rem 1.4rem;
+	text-decoration: none;
+}
+
+#status-notice .notice-actions a {
+	background-color: transparent;
+	border: 1px solid #e0e0e0;
+	color: #e0e0e0;
+}
 		</style>
 		<link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
 <link rel="apple-touch-icon" href="index.apple-touch-icon.png"/>
@@ -112,7 +142,7 @@ body {
 
 		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":80813796,"index.wasm":38820072},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"serviceWorker":"index.service.worker.js"};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":80853956,"index.wasm":38820072},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"serviceWorker":"index.service.worker.js"};
 const GODOT_THREADS_ENABLED = true;
 const engine = new Engine(GODOT_CONFIG);
 
@@ -167,43 +197,126 @@ const engine = new Engine(GODOT_CONFIG);
 		threads: GODOT_THREADS_ENABLED,
 	});
 
-	const COI_RELOAD_KEY = 'godot-coi-reload';
-	const COI_MAX_ATTEMPTS = 3;
+	// The threaded build needs cross-origin isolation, which on GitHub Pages only the PWA service
+	// worker can add (COOP/COEP on its responses). A page loaded before the worker controls it is
+	// not isolated and has to reload once the worker is active.
+	const COI_STATE_KEY = 'godot-coi-reload';
+	const COI_MAX_ATTEMPTS = 4;
+	const COI_RELOAD_DELAYS_MS = [0, 500, 1500, 3000];
+	const COI_READY_TIMEOUT_MS = 20000;
+	const COI_CONTROL_TIMEOUT_MS = 5000;
 
-	function coiAttempts() {
-		try {
-			return parseInt(sessionStorage.getItem(COI_RELOAD_KEY) || '0', 10) || 0;
-		} catch (err) {
-			return 0;
-		}
-	}
+	const COI_TEXT = {
+		en: {
+			title: 'The game could not start in this browser tab.',
+			body: 'The browser did not enable a feature the game needs. Reloading the page usually fixes it.',
+			hint: 'If it keeps failing, open the page in Chrome, Edge, Firefox or Safari (not inside another app), or download the desktop version.',
+			reload: 'Reload',
+			download: 'Desktop version',
+		},
+		tr: {
+			title: 'Oyun bu sekmede başlatılamadı.',
+			body: 'Tarayıcı, oyunun ihtiyaç duyduğu bir özelliği açmadı. Sayfayı yenilemek genelde sorunu çözer.',
+			hint: 'Sorun sürerse sayfayı Chrome, Edge, Firefox veya Safari\'de açın (başka bir uygulamanın içinden değil) ya da masaüstü sürümünü indirin.',
+			reload: 'Yenile',
+			download: 'Masaüstü sürümü',
+		},
+	};
 
-	function bumpCoiAttempt() {
-		const n = coiAttempts() + 1;
+	function coiLang() {
 		try {
-			sessionStorage.setItem(COI_RELOAD_KEY, String(n));
+			const saved = localStorage.getItem('noname-soccer-lang');
+			if (saved === 'tr' || saved === 'en') {
+				return saved;
+			}
 		} catch (err) {
 			// ignore
 		}
-		return n;
+		return (navigator.language || 'en').toLowerCase().indexOf('tr') === 0 ? 'tr' : 'en';
 	}
 
-	function clearCoiAttempts() {
+	function readCoiState() {
 		try {
-			sessionStorage.removeItem(COI_RELOAD_KEY);
+			const state = JSON.parse(sessionStorage.getItem(COI_STATE_KEY) || 'null');
+			if (state && typeof state.n === 'number') {
+				return state;
+			}
 		} catch (err) {
 			// ignore
 		}
+		return { n: 0, auto: false };
+	}
+
+	function writeCoiState(state) {
+		try {
+			sessionStorage.setItem(COI_STATE_KEY, JSON.stringify(state));
+		} catch (err) {
+			// ignore
+		}
+	}
+
+	function clearCoiState() {
+		try {
+			sessionStorage.removeItem(COI_STATE_KEY);
+		} catch (err) {
+			// ignore
+		}
+	}
+
+	// Only reloads made by this script count toward the limit; a manual refresh or a new visit
+	// starts a fresh round, so the user is never stuck behind attempts from earlier.
+	const coiState = readCoiState();
+	const coiAttempts = coiState.auto ? coiState.n : 0;
+	writeCoiState({ n: coiAttempts, auto: false });
+
+	function displayIsolationNotice() {
+		console.error('Missing features:', missing);
+		const text = COI_TEXT[coiLang()];
+		while (statusNotice.lastChild) {
+			statusNotice.removeChild(statusNotice.lastChild);
+		}
+		const title = document.createElement('strong');
+		title.textContent = text.title;
+		statusNotice.appendChild(title);
+		[text.body, text.hint].forEach((line) => {
+			const p = document.createElement('p');
+			p.textContent = line;
+			statusNotice.appendChild(p);
+		});
+		const actions = document.createElement('div');
+		actions.className = 'notice-actions';
+		const reload = document.createElement('button');
+		reload.type = 'button';
+		reload.textContent = text.reload;
+		reload.addEventListener('click', () => {
+			clearCoiState();
+			window.location.reload();
+		});
+		actions.appendChild(reload);
+		const download = document.createElement('a');
+		download.href = '../#download';
+		download.textContent = text.download;
+		actions.appendChild(download);
+		statusNotice.appendChild(actions);
+		setStatusMode('notice');
+		initializing = false;
 	}
 
 	function reloadForCrossOriginIsolation() {
-		const n = bumpCoiAttempt();
-		if (n > COI_MAX_ATTEMPTS) {
-			const missingMsg = 'Error\nThe following features required to run Godot projects on the Web are missing:\n';
-			displayFailureNotice(missingMsg + missing.join('\n'));
+		if (coiAttempts >= COI_MAX_ATTEMPTS) {
+			displayIsolationNotice();
 			return;
 		}
-		window.location.reload();
+		writeCoiState({ n: coiAttempts + 1, auto: true });
+		const delay = COI_RELOAD_DELAYS_MS[Math.min(coiAttempts, COI_RELOAD_DELAYS_MS.length - 1)];
+		setTimeout(() => window.location.reload(), delay);
+	}
+
+	function withTimeout(promise, timeoutMs) {
+		return Promise.race([
+			promise,
+			new Promise((resolve) => setTimeout(() => resolve(null), timeoutMs)),
+		]);
 	}
 
 	function waitForServiceWorkerControl(timeoutMs) {
@@ -226,47 +339,35 @@ const engine = new Engine(GODOT_CONFIG);
 		});
 	}
 
-	async function ensureThreadedServiceWorker() {
-		const swUrl = GODOT_CONFIG['serviceWorker'];
-		if (!swUrl || !('serviceWorker' in navigator)) {
+	async function ensureServiceWorkerControl() {
+		const registration = await navigator.serviceWorker.register(GODOT_CONFIG['serviceWorker'], { updateViaCache: 'none' });
+		// clients.claim() only works from an activated worker, so ask the active one, not an installing one.
+		let active = registration.active;
+		if (!active) {
+			const ready = await withTimeout(navigator.serviceWorker.ready, COI_READY_TIMEOUT_MS);
+			active = ready ? ready.active : null;
+		}
+		if (!active) {
 			return false;
 		}
-		// Register (or re-register) so the play/ worker is active; do not race a short timeout.
-		const registration = await navigator.serviceWorker.register(swUrl, { updateViaCache: 'none' });
-		const worker = registration.active || registration.waiting || registration.installing;
-		if (worker) {
-			try {
-				worker.postMessage('claim');
-			} catch (err) {
-				// ignore
-			}
-		}
-		await navigator.serviceWorker.ready;
 		if (!navigator.serviceWorker.controller) {
-			await waitForServiceWorkerControl(4000);
+			active.postMessage('claim');
+			await waitForServiceWorkerControl(COI_CONTROL_TIMEOUT_MS);
 		}
 		return !!navigator.serviceWorker.controller;
 	}
 
 	if (missing.length !== 0) {
-		if (GODOT_CONFIG['serviceWorker'] && GODOT_CONFIG['ensureCrossOriginIsolationHeaders'] && 'serviceWorker' in navigator) {
-			ensureThreadedServiceWorker().then((controlling) => {
-				if (!controlling && coiAttempts() >= COI_MAX_ATTEMPTS) {
-					const missingMsg = 'Error\nThe following features required to run Godot projects on the Web are missing:\n';
-					displayFailureNotice(missingMsg + missing.join('\n'));
-					return;
-				}
-				reloadForCrossOriginIsolation();
-			}).catch((err) => {
+		if (GODOT_CONFIG['serviceWorker'] && GODOT_CONFIG['ensureCrossOriginIsolationHeaders'] && 'serviceWorker' in navigator && window.isSecureContext) {
+			ensureServiceWorkerControl().catch((err) => {
 				console.error('Error while registering service worker:', err);
-				reloadForCrossOriginIsolation();
-			});
+				return false;
+			}).then(() => reloadForCrossOriginIsolation());
 		} else {
-			const missingMsg = 'Error\nThe following features required to run Godot projects on the Web are missing:\n';
-			displayFailureNotice(missingMsg + missing.join('\n'));
+			displayIsolationNotice();
 		}
 	} else {
-		clearCoiAttempts();
+		clearCoiState();
 		setStatusMode('progress');
 		engine.startGame({
 			'onProgress': function (current, total) {
