@@ -27,7 +27,7 @@
 		<div class="wrap">
 			<article data-lang-block="tr" lang="tr">
 				<h1>Gizlilik Politikası</h1>
-				<p class="legal-updated">Son güncelleme: 29 Eylül 2026</p>
+				<p class="legal-updated">Son güncelleme: 2 Ekim 2026</p>
 
 				<h2>Biz kimiz</h2>
 				<p>nonamesoccer.com sitesini ve Noname Soccer oyununu Halil İbrahim Kalkan bireysel olarak geliştirir ve yayınlar. Bu metinde "biz" derken onu kastediyoruz. Kişisel verileriniz için veri sorumlusu da odur.</p>
@@ -52,13 +52,16 @@
 				</ul>
 
 				<h2>Oyun</h2>
-				<p>Noname Soccer'da hesap, çevrim içi özellik ya da oyuna ait bir veri toplama sistemi yoktur. Oyun ayarları yalnızca kendi cihazınızda saklanır: masaüstü sürümünde kullanıcı profil klasörünüzde, tarayıcı sürümünde tarayıcınızın depolamasında. Oyun bu verileri bize veya başka birine göndermez.</p>
+				<p>Noname Soccer'da hesap ya da oyuna ait bir veri toplama sistemi yoktur. Oyun ayarları yalnızca kendi cihazınızda saklanır: masaüstü sürümünde kullanıcı profil klasörünüzde, tarayıcı sürümünde tarayıcınızın depolamasında. Oyun bu verileri bize veya başka birine göndermez.</p>
+				<p><strong>Online maç:</strong> Bir arkadaşınızla online oynadığınızda iki oyunu buluşturmak için oda kodu, oyun sürümü ve bağlantı kurma bilgileri <strong>Supabase Realtime</strong> üzerinden kısa süreliğine iletilir; bunlar saklanmaz ve bağlantı kurulunca kanaldan çıkılır. Maç daha sonra iki oyuncu arasında doğrudan (WebRTC ile, eşler arası) oynanır ve yalnızca kontrol girdileri gönderilir. Bu yüzden iki oyuncu birbirinin IP adresini görebilir. Bağlantıyı kurmak için Google ve Cloudflare'in STUN sunucuları kullanılır; bu sunucular da IP adresinizi görür. Online oyunda hesap, sıralama ya da maç istatistiği yoktur.</p>
 
 				<h2>Üçüncü taraflar</h2>
 				<ul>
 					<li><strong>Google Analytics</strong> (Google LLC): yukarıda anlatılan ziyaret istatistikleri. Veriler Google'ın sunucularında, ABD dahil yurt dışında işlenebilir.</li>
 					<li><strong>YouTube</strong>: fragman <code>youtube-nocookie.com</code> üzerinden gömülüdür. Videoyu oynattığınızda YouTube'un kendi gizlilik kuralları geçerli olur.</li>
 					<li><strong>GitHub</strong>: site GitHub Pages üzerinde barındırılır, masaüstü sürümleri GitHub Releases üzerinden indirilir. GitHub, hizmetin işleyişi için sunucu kayıtları (IP adresi dahil) tutabilir.</li>
+					<li><strong>Supabase</strong>: online maçta iki oyuncuyu buluşturmak için kullanılır (yukarıda anlatıldığı gibi). Supabase, hizmetin işleyişi için sunucu kayıtları (IP adresi dahil) tutabilir.</li>
+					<li><strong>Google ve Cloudflare STUN sunucuları</strong>: online maçta doğrudan bağlantı kurulabilmesi için IP adresinizi ve bağlantı noktanızı size bildirir.</li>
 				</ul>
 
 				<h2>Haklarınız</h2>
@@ -76,7 +79,7 @@
 
 			<article data-lang-block="en" lang="en" hidden>
 				<h1>Privacy Policy</h1>
-				<p class="legal-updated">Last updated: September 29, 2026</p>
+				<p class="legal-updated">Last updated: October 2, 2026</p>
 
 				<h2>Who we are</h2>
 				<p>The nonamesoccer.com website and the Noname Soccer game are developed and published by Halil İbrahim Kalkan as an individual. "We" in this policy means him. He is the data controller for your personal data.</p>
@@ -101,13 +104,16 @@
 				</ul>
 
 				<h2>The game</h2>
-				<p>Noname Soccer has no accounts, no online features and no data collection of its own. Game settings are stored only on your device: in your user profile folder for the desktop builds, and in your browser's storage for the browser version. The game does not send this data to us or anyone else.</p>
+				<p>Noname Soccer has no accounts and no data collection of its own. Game settings are stored only on your device: in your user profile folder for the desktop builds, and in your browser's storage for the browser version. The game does not send this data to us or anyone else.</p>
+				<p><strong>Online matches:</strong> When you play a friend online, the room code, the game version and the connection setup details pass briefly through <strong>Supabase Realtime</strong> to bring the two games together; they are not stored, and both games leave the channel once connected. The match itself then runs directly between the two players (WebRTC, peer to peer), and only control inputs are sent. Because of this, the two players can see each other's IP address. Google's and Cloudflare's STUN servers are used to set up the connection and see your IP address too. Online play has no accounts, rankings or match statistics.</p>
 
 				<h2>Third parties</h2>
 				<ul>
 					<li><strong>Google Analytics</strong> (Google LLC): the visit statistics described above. Data may be processed on Google's servers outside your country, including in the United States.</li>
 					<li><strong>YouTube</strong>: the trailer is embedded from <code>youtube-nocookie.com</code>. When you play the video, YouTube's own privacy rules apply.</li>
 					<li><strong>GitHub</strong>: the site is hosted on GitHub Pages and the desktop builds are downloaded from GitHub Releases. GitHub may keep server logs (including IP addresses) to operate the service.</li>
+					<li><strong>Supabase</strong>: brings the two players of an online match together (as described above). Supabase may keep server logs (including IP addresses) to operate the service.</li>
+					<li><strong>Google and Cloudflare STUN servers</strong>: tell your game its public IP address and port so an online match can connect directly.</li>
 				</ul>
 
 				<h2>Your rights</h2>

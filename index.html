@@ -4,9 +4,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Noname Soccer — Free arcade football</title>
-	<meta name="description" content="Free arcade 11v11 soccer. Play football, don't manage it. In the browser or on Windows and macOS, no account needed.">
+	<meta name="description" content="Free arcade 11v11 soccer. Play against the CPU, with a friend on one computer or online. In the browser or on Windows and macOS, no account needed.">
 	<meta property="og:title" content="Noname Soccer — Free arcade football">
-	<meta property="og:description" content="Free arcade 11v11 soccer. Play football, don't manage it.">
+	<meta property="og:description" content="Free arcade 11v11 soccer. Against the CPU, with a friend on one computer or online.">
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="https://nonamesoccer.com/">
 	<meta property="og:image" content="https://nonamesoccer.com/img/og.jpg">
@@ -21,6 +21,7 @@
 	<header class="top">
 		<div class="brand">NONAME SOCCER</div>
 		<nav class="top-nav" aria-label="Sections">
+			<a href="#modes" data-i18n="nav_modes">Modes</a>
 			<a href="#trailer" data-i18n="nav_trailer">Trailer</a>
 			<a href="#commentary" data-i18n="nav_voice">Commentary</a>
 			<a href="#download" data-i18n="nav_download">Download</a>
@@ -40,17 +41,47 @@
 				<h1 class="logo"><img src="img/logo.png" alt="Noname Soccer" width="960" height="312"></h1>
 				<p class="tagline" data-i18n="tagline">Play football. Don't manage it.</p>
 				<p class="lede" data-i18n="lede">Full pitch, cute players, honest rules. No attributes, no stamina bars, no tactics sliders — just the match.</p>
+				<ul class="mode-chips">
+					<li><a class="mode-chip" href="#modes" data-i18n="chip_cpu">Against the CPU</a></li>
+					<li><a class="mode-chip" href="#modes" data-i18n="chip_local">2 players, one computer</a></li>
+					<li><a class="mode-chip is-new" href="#modes"><span data-i18n="chip_online">Online</span> <span class="new-badge" data-i18n="badge_new">New</span></a></li>
+				</ul>
 				<div class="cta-row">
 					<a class="btn btn-play" href="play/" data-play-link="hero" data-i18n="cta_play">Try in browser</a>
 					<a class="btn btn-ghost" href="#download" data-i18n="cta_download">Download</a>
 					<a class="trailer-link" href="#trailer"><span class="trailer-link-icon" aria-hidden="true">&#9654;</span> <span data-i18n="cta_trailer">Watch the trailer</span></a>
 				</div>
-				<p class="free-line"><span class="free-badge" data-i18n="free_badge">Free</span> <span data-i18n="free_note">No account needed — just play.</span></p>
+				<p class="free-line"><span class="free-badge" data-i18n="free_badge">Free</span> <span data-i18n="free_note">No account needed, not even online.</span></p>
 				<p class="voice-line" data-lang-block="tr" hidden>
 					<a class="voice-badge" href="#commentary"><svg class="mic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/></svg> <span data-i18n="voice_badge">Türkçe spikerli</span></a>
 				</p>
-				<p class="version-tag"><span data-i18n="version">Version</span> <span class="version-num">0.3.0</span></p>
+				<p class="version-tag"><span data-i18n="version">Version</span> <span class="version-num">0.3.1</span></p>
 				<p class="mobile-note" data-i18n="mobile_note">Best on desktop with keyboard or gamepad.</p>
+			</div>
+		</section>
+
+		<section class="section modes" id="modes" aria-labelledby="modes-title">
+			<div class="wrap">
+				<h2 id="modes-title" data-i18n="modes_title">How do you want to play?</h2>
+				<p class="section-lead" data-i18n="modes_lead">Alone against the computer, side by side with a friend, or online against a friend anywhere. The same match every way.</p>
+				<ul class="mode-grid">
+					<li class="mode-card">
+						<svg class="mode-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-7v2h3v2H7v-2h3v-2H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm1 2v9h16V6H4z"/></svg>
+						<h3 data-i18n="mode_cpu_t">Against the CPU</h3>
+						<p data-i18n="mode_cpu_b">On your own, a quick match or a tournament. Three difficulty levels; difficulty only changes how well the computer decides.</p>
+					</li>
+					<li class="mode-card">
+						<svg class="mode-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 6h10a5 5 0 0 1 4.9 6l-1 4.6a2.6 2.6 0 0 1-4.5 1.2L14.6 16H9.4l-1.8 1.8a2.6 2.6 0 0 1-4.5-1.2L2.1 12A5 5 0 0 1 7 6zm0 3v1.5H5.5v1.5H7v1.5h1.5V12H10v-1.5H8.5V9H7zm9.5 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 2.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg>
+						<h3 data-i18n="mode_local_t">Two players, one computer</h3>
+						<p data-i18n="mode_local_b">Side by side with a friend, one team each: P1 on the keyboard (or a gamepad), P2 on a gamepad. The AI plays your teammates.</p>
+					</li>
+					<li class="mode-card is-new">
+						<svg class="mode-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20zm-2.3 2.4A8 8 0 0 0 4.06 11h3.47c.13-2.4.88-4.7 2.17-6.6zm4.6 0c1.29 1.9 2.04 4.2 2.17 6.6h3.47a8 8 0 0 0-5.64-6.6zM12 4.3c-1.4 1.8-2.3 4.1-2.46 6.7h4.92C14.3 8.4 13.4 6.1 12 4.3zM4.06 13a8 8 0 0 0 5.64 6.6A13.7 13.7 0 0 1 7.53 13H4.06zm5.48 0c.16 2.6 1.06 4.9 2.46 6.7 1.4-1.8 2.3-4.1 2.46-6.7H9.54zm6.93 0a13.7 13.7 0 0 1-2.17 6.6A8 8 0 0 0 19.94 13h-3.47z"/></svg>
+						<h3><span data-i18n="mode_online_t">Online</span> <span class="new-badge" data-i18n="badge_new">New</span></h3>
+						<p data-i18n="mode_online_b">One of you opens a room, the other joins with its six-letter code or an invite link. The link opens in the browser, so your friend needs to download nothing; browser and desktop play each other. Rematch on the same connection.</p>
+						<p class="mode-note" data-i18n="mode_online_note">No account, no ranking, no stats — just the match.</p>
+					</li>
+				</ul>
 			</div>
 		</section>
 
@@ -182,16 +213,16 @@
 			<div class="wrap">
 				<h2 id="dl-title" data-i18n="dl_title">Download</h2>
 				<p class="section-lead" data-i18n="dl_lead">Free portable builds — unzip and play. No installer. Settings live in your user profile.</p>
-				<p class="dl-version"><span data-i18n="dl_version">Latest version</span> <span class="version-num">0.3.0</span></p>
+				<p class="dl-version"><span data-i18n="dl_version">Latest version</span> <span class="version-num">0.3.1</span></p>
 				<div class="dl-grid">
 					<article class="dl-card" data-os="windows">
 						<h3>Windows</h3>
-						<p class="dl-meta" data-i18n="dl_win_meta">x64 · ~95 MB zip · single .exe</p>
+						<p class="dl-meta" data-i18n="dl_win_meta">x64 · ~95 MB zip · no installer</p>
 						<a class="btn btn-dl" id="dl-win"
 							href="https://github.com/hikalkan/noname-soccer/releases/latest/download/NonameSoccer-windows-x64.zip"
 							data-i18n="dl_win_btn">Download for Windows</a>
 						<ol class="dl-steps">
-							<li data-i18n="dl_win_1">Unzip anywhere and run NonameSoccer.exe.</li>
+							<li data-i18n="dl_win_1">Unzip anywhere and run NonameSoccer.exe. Keep the files in the folder together (online play needs them).</li>
 							<li data-i18n="dl_win_2">If SmartScreen warns: More info → Run anyway.</li>
 						</ol>
 					</article>
@@ -244,6 +275,7 @@
 						</tbody>
 					</table>
 				</div>
+				<p class="ctl-note" data-i18n="ctl_2p">Two players on one computer: P1 on the keyboard (or a second gamepad), P2 on a gamepad. Keyboard-only 2 players is not supported.</p>
 			</div>
 		</section>
 	</main>
@@ -252,7 +284,7 @@
 		<div class="wrap foot-inner">
 			<p data-i18n="foot_line">Free, independent arcade football. Original team names only — no real clubs or players.</p>
 			<p class="foot-meta">
-				<span><span data-i18n="version">Version</span> <span class="version-num">0.3.0</span></span>
+				<span><span data-i18n="version">Version</span> <span class="version-num">0.3.1</span></span>
 				<span data-i18n="foot_fonts">Fonts: Russo One &amp; Barlow (OFL).</span>
 				<a href="https://github.com/hikalkan/noname-soccer" rel="noopener">GitHub</a>
 				<a href="privacy.html" data-i18n="foot_privacy">Privacy</a>
