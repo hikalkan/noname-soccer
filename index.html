@@ -41,10 +41,10 @@
 				<h1 class="logo"><img src="img/logo.png" alt="Noname Soccer" width="960" height="312"></h1>
 				<p class="tagline" data-i18n="tagline">Play football. Don't manage it.</p>
 				<p class="lede" data-i18n="lede">Full pitch, cute players, honest rules. No attributes, no stamina bars, no tactics sliders — just the match.</p>
-				<ul class="mode-chips">
-					<li><a class="mode-chip" href="#modes" data-i18n="chip_cpu">Against the CPU</a></li>
-					<li><a class="mode-chip" href="#modes" data-i18n="chip_local">2 players, one computer</a></li>
-					<li><a class="mode-chip is-new" href="#modes"><span data-i18n="chip_online">Online</span> <span class="new-badge" data-i18n="badge_new">New</span></a></li>
+				<ul class="mode-line">
+					<li data-i18n="chip_cpu">Against the CPU</li>
+					<li data-i18n="chip_local">2 players, one computer</li>
+					<li><span data-i18n="chip_online">Online</span> <span class="new-badge" data-i18n="badge_new">New</span></li>
 				</ul>
 				<div class="cta-row">
 					<a class="btn btn-play" href="play/" data-play-link="hero" data-i18n="cta_play">Try in browser</a>
@@ -62,8 +62,8 @@
 
 		<section class="section modes" id="modes" aria-labelledby="modes-title">
 			<div class="wrap">
-				<h2 id="modes-title" data-i18n="modes_title">How do you want to play?</h2>
-				<p class="section-lead" data-i18n="modes_lead">Alone against the computer, side by side with a friend, or online against a friend anywhere. The same match every way.</p>
+				<h2 id="modes-title" data-i18n="modes_title">Solo, side by side or online</h2>
+				<p class="section-lead" data-i18n="modes_lead">All three are in the same game: pick one from the menu once it starts. The same match every way.</p>
 				<ul class="mode-grid">
 					<li class="mode-card">
 						<svg class="mode-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-7v2h3v2H7v-2h3v-2H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm1 2v9h16V6H4z"/></svg>
@@ -82,6 +82,10 @@
 						<p class="mode-note" data-i18n="mode_online_note">No account, no ranking, no stats — just the match.</p>
 					</li>
 				</ul>
+				<div class="cta-row modes-cta">
+					<a class="btn btn-play" href="play/" data-play-link="modes" data-i18n="cta_play">Try in browser</a>
+					<a class="btn btn-ghost" href="#download" data-i18n="cta_download">Download</a>
+				</div>
 			</div>
 		</section>
 

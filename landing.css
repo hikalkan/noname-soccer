@@ -211,35 +211,22 @@ a {
 	font-size: 1.05rem;
 }
 
-.mode-chips {
+.mode-line {
 	list-style: none;
-	margin: 1.1rem 0 0;
+	margin: 1rem 0 0;
 	padding: 0;
 	display: flex;
 	flex-wrap: wrap;
-	gap: 0.5rem;
-}
-.mode-chip {
-	display: inline-flex;
 	align-items: center;
-	gap: 0.45rem;
-	padding: 0.35rem 0.85rem;
-	border-radius: 999px;
-	border: 1px solid rgba(255, 255, 255, 0.28);
-	background: rgba(11, 22, 40, 0.55);
+	gap: 0.3rem 0;
 	color: var(--ink);
 	font-weight: 700;
-	font-size: 0.92rem;
-	text-decoration: none;
-	transition: border-color 0.15s ease, color 0.15s ease;
+	font-size: 1rem;
 }
-.mode-chip:hover,
-.mode-chip:focus-visible {
-	border-color: var(--yellow);
+.mode-line li + li::before {
+	content: "·";
+	margin: 0 0.65rem;
 	color: var(--yellow);
-}
-.mode-chip.is-new {
-	border-color: var(--yellow);
 }
 
 .new-badge {
@@ -461,7 +448,7 @@ a {
 	padding: 0;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: 1rem;
+	gap: 1.5rem 2.25rem;
 }
 @media (max-width: 900px) {
 	.mode-grid {
@@ -469,21 +456,14 @@ a {
 	}
 }
 .mode-card {
-	background: var(--card);
-	border: 1px solid rgba(255, 255, 255, 0.08);
-	border-top: 3px solid var(--pitch-bright);
-	border-radius: var(--radius);
-	padding: 1.3rem 1.3rem 1.4rem;
-	box-shadow: var(--shadow);
-}
-.mode-card.is-new {
-	border-top-color: var(--yellow);
+	padding-left: 1.1rem;
+	border-left: 2px solid rgba(255, 255, 255, 0.12);
 }
 .mode-icon {
-	width: 2.4rem;
-	height: 2.4rem;
+	width: 2rem;
+	height: 2rem;
 	fill: var(--yellow);
-	margin-bottom: 0.7rem;
+	margin-bottom: 0.6rem;
 }
 .mode-card h3 {
 	margin: 0 0 0.45rem;
@@ -505,6 +485,9 @@ a {
 	color: var(--ink);
 	font-weight: 700;
 	font-size: 0.92rem;
+}
+.modes-cta {
+	margin-top: 2.2rem;
 }
 
 /* Wide frame so YouTube is more likely to pick 720p+ (quality is not forceable via API). */
@@ -1104,7 +1087,6 @@ html[lang="en"] .voice-play[data-voice="en"] {
 		scroll-behavior: auto;
 	}
 	.btn,
-	.mode-chip,
 	.shot img,
 	.voice-badge,
 	.voice-play {
