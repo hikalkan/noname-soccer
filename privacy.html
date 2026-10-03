@@ -27,7 +27,7 @@
 		<div class="wrap">
 			<article data-lang-block="tr" lang="tr">
 				<h1>Gizlilik Politikası</h1>
-				<p class="legal-updated">Son güncelleme: 2 Ekim 2026</p>
+				<p class="legal-updated">Son güncelleme: 3 Ekim 2026</p>
 
 				<h2>Biz kimiz</h2>
 				<p>nonamesoccer.com sitesini ve Noname Soccer oyununu Halil İbrahim Kalkan bireysel olarak geliştirir ve yayınlar. Bu metinde "biz" derken onu kastediyoruz. Kişisel verileriniz için veri sorumlusu da odur.</p>
@@ -54,14 +54,18 @@
 				<h2>Oyun</h2>
 				<p>Noname Soccer'da hesap ya da oyuna ait bir veri toplama sistemi yoktur. Oyun ayarları yalnızca kendi cihazınızda saklanır: masaüstü sürümünde kullanıcı profil klasörünüzde, tarayıcı sürümünde tarayıcınızın depolamasında. Oyun bu verileri bize veya başka birine göndermez.</p>
 				<p><strong>Online maç:</strong> Bir arkadaşınızla online oynadığınızda iki oyunu buluşturmak için oda kodu, oyun sürümü ve bağlantı kurma bilgileri <strong>Supabase Realtime</strong> üzerinden kısa süreliğine iletilir; bunlar saklanmaz ve bağlantı kurulunca kanaldan çıkılır. Maç daha sonra iki oyuncu arasında doğrudan (WebRTC ile, eşler arası) oynanır ve yalnızca kontrol girdileri gönderilir. Bu yüzden iki oyuncu birbirinin IP adresini görebilir. Bağlantıyı kurmak için Google ve Cloudflare'in STUN sunucuları kullanılır; bu sunucular da IP adresinizi görür. Online oyunda hesap, sıralama ya da maç istatistiği yoktur.</p>
+				<p><strong>Bağlantı aktarıcısı (TURN):</strong> Bazı ağlarda iki oyun doğrudan bağlanamaz. Bu durumda maçın kontrol girdileri <strong>Cloudflare</strong>'in TURN sunucusu üzerinden aktarılır ve Cloudflare iki oyuncunun IP adresini görür. Oyun, oda açılmadan önce bu sunucu için kısa ömürlü (en fazla 2 saat geçerli) bir erişim bilgisini Supabase üzerindeki küçük bir sunucu fonksiyonundan alır. Bu hizmetin kötüye kullanılmasını önlemek için fonksiyon, isteği yapanın IP adresini ve isteğin zamanını Supabase veritabanına kaydeder ve bir IP adresinden saatte en fazla 20 istek kabul eder. Bu kayıtlar yalnızca bu sınır için kullanılır ve bir günden eski olanlar silinir.</p>
+				<p><strong>Sürüm kontrolü:</strong> Siteden indirilen masaüstü sürümü, yeni bir sürüm çıkıp çıkmadığını göstermek için her açılışta bir kez <code>nonamesoccer.com/version.json</code> dosyasını okur. Bu istekle hiçbir oyun verisi gönderilmez. Microsoft Store sürümü bu kontrolü yapmaz; güncellemeleri Store dağıtır.</p>
 
 				<h2>Üçüncü taraflar</h2>
 				<ul>
 					<li><strong>Google Analytics</strong> (Google LLC): yukarıda anlatılan ziyaret istatistikleri. Veriler Google'ın sunucularında, ABD dahil yurt dışında işlenebilir.</li>
 					<li><strong>YouTube</strong>: fragman <code>youtube-nocookie.com</code> üzerinden gömülüdür. Videoyu oynattığınızda YouTube'un kendi gizlilik kuralları geçerli olur.</li>
 					<li><strong>GitHub</strong>: site GitHub Pages üzerinde barındırılır, masaüstü sürümleri GitHub Releases üzerinden indirilir. GitHub, hizmetin işleyişi için sunucu kayıtları (IP adresi dahil) tutabilir.</li>
-					<li><strong>Supabase</strong>: online maçta iki oyuncuyu buluşturmak için kullanılır (yukarıda anlatıldığı gibi). Supabase, hizmetin işleyişi için sunucu kayıtları (IP adresi dahil) tutabilir.</li>
+					<li><strong>Supabase</strong>: online maçta iki oyuncuyu buluşturmak ve TURN erişim bilgisini vermek için kullanılır (yukarıda anlatıldığı gibi). Supabase, hizmetin işleyişi için sunucu kayıtları (IP adresi dahil) tutabilir.</li>
 					<li><strong>Google ve Cloudflare STUN sunucuları</strong>: online maçta doğrudan bağlantı kurulabilmesi için IP adresinizi ve bağlantı noktanızı size bildirir.</li>
+					<li><strong>Cloudflare TURN</strong>: doğrudan bağlantı kurulamadığında online maçın kontrol girdilerini iki oyuncu arasında aktarır (yukarıda anlatıldığı gibi).</li>
+					<li><strong>Microsoft Store</strong>: oyunu Microsoft Store'dan kurarsanız kurulum ve güncellemeler Microsoft'un kendi gizlilik bildirimine tabidir.</li>
 				</ul>
 
 				<h2>Haklarınız</h2>
@@ -79,7 +83,7 @@
 
 			<article data-lang-block="en" lang="en" hidden>
 				<h1>Privacy Policy</h1>
-				<p class="legal-updated">Last updated: October 2, 2026</p>
+				<p class="legal-updated">Last updated: October 3, 2026</p>
 
 				<h2>Who we are</h2>
 				<p>The nonamesoccer.com website and the Noname Soccer game are developed and published by Halil İbrahim Kalkan as an individual. "We" in this policy means him. He is the data controller for your personal data.</p>
@@ -106,14 +110,18 @@
 				<h2>The game</h2>
 				<p>Noname Soccer has no accounts and no data collection of its own. Game settings are stored only on your device: in your user profile folder for the desktop builds, and in your browser's storage for the browser version. The game does not send this data to us or anyone else.</p>
 				<p><strong>Online matches:</strong> When you play a friend online, the room code, the game version and the connection setup details pass briefly through <strong>Supabase Realtime</strong> to bring the two games together; they are not stored, and both games leave the channel once connected. The match itself then runs directly between the two players (WebRTC, peer to peer), and only control inputs are sent. Because of this, the two players can see each other's IP address. Google's and Cloudflare's STUN servers are used to set up the connection and see your IP address too. Online play has no accounts, rankings or match statistics.</p>
+				<p><strong>Connection relay (TURN):</strong> On some networks the two games cannot connect directly. The match's control inputs are then relayed through <strong>Cloudflare</strong>'s TURN server, and Cloudflare sees both players' IP addresses. Before a room opens, the game gets a short-lived access credential for this server (valid for at most 2 hours) from a small server function on Supabase. To prevent abuse of this service, the function records the requester's IP address and the time of the request in a Supabase database and accepts at most 20 requests an hour from one IP address. These records are used only for this limit, and those older than a day are deleted.</p>
+				<p><strong>Version check:</strong> The desktop build downloaded from the site reads <code>nonamesoccer.com/version.json</code> once per launch to tell you when a new version is out. No game data is sent with this request. The Microsoft Store version does not do this check; the Store delivers its updates.</p>
 
 				<h2>Third parties</h2>
 				<ul>
 					<li><strong>Google Analytics</strong> (Google LLC): the visit statistics described above. Data may be processed on Google's servers outside your country, including in the United States.</li>
 					<li><strong>YouTube</strong>: the trailer is embedded from <code>youtube-nocookie.com</code>. When you play the video, YouTube's own privacy rules apply.</li>
 					<li><strong>GitHub</strong>: the site is hosted on GitHub Pages and the desktop builds are downloaded from GitHub Releases. GitHub may keep server logs (including IP addresses) to operate the service.</li>
-					<li><strong>Supabase</strong>: brings the two players of an online match together (as described above). Supabase may keep server logs (including IP addresses) to operate the service.</li>
+					<li><strong>Supabase</strong>: brings the two players of an online match together and hands out the TURN credential (as described above). Supabase may keep server logs (including IP addresses) to operate the service.</li>
 					<li><strong>Google and Cloudflare STUN servers</strong>: tell your game its public IP address and port so an online match can connect directly.</li>
+					<li><strong>Cloudflare TURN</strong>: relays the control inputs of an online match between the two players when they cannot connect directly (as described above).</li>
+					<li><strong>Microsoft Store</strong>: if you install the game from the Microsoft Store, installation and updates are covered by Microsoft's own privacy statement.</li>
 				</ul>
 
 				<h2>Your rights</h2>
