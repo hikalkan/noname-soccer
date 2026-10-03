@@ -142,7 +142,7 @@ body {
 
 		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":81107920,"index.wasm":38820072},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"serviceWorker":"index.service.worker.js"};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":81120056,"index.wasm":38820072},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"serviceWorker":"index.service.worker.js"};
 const GODOT_THREADS_ENABLED = true;
 const engine = new Engine(GODOT_CONFIG);
 
@@ -192,6 +192,54 @@ const engine = new Engine(GODOT_CONFIG);
 		setStatusMode('notice');
 		initializing = false;
 	}
+
+	// A refresh that really loads a new build. The service worker keeps serving the cached game
+	// until its waiting successor is activated, and the game would swallow F5 / Ctrl+R anyway, so
+	// both keys (and the game's Update buttons) come here: activate a waiting worker (it reloads
+	// every tab), otherwise reload.
+	window.nonameUpdate = async function () {
+		const reload = () => window.location.reload();
+		if (!('serviceWorker' in navigator)) {
+			reload();
+			return;
+		}
+		try {
+			const reg = await navigator.serviceWorker.getRegistration();
+			if (!reg) {
+				reload();
+				return;
+			}
+			if (!reg.waiting) {
+				await withTimeout(reg.update(), 4000);
+			}
+			const worker = reg.waiting || reg.installing;
+			if (!worker) {
+				reload();
+				return;
+			}
+			const go = () => (reg.waiting ? reg.waiting.postMessage('update') : reload());
+			if (worker.state === 'installed') {
+				go();
+				return;
+			}
+			worker.addEventListener('statechange', () => {
+				if (worker.state !== 'installing') {
+					go();
+				}
+			});
+			setTimeout(reload, 8000);
+		} catch (err) {
+			reload();
+		}
+	};
+	window.addEventListener('keydown', (e) => {
+		const key = (e.key || '').toLowerCase();
+		if (key === 'f5' || ((e.ctrlKey || e.metaKey) && key === 'r')) {
+			e.preventDefault();
+			e.stopImmediatePropagation();
+			window.nonameUpdate();
+		}
+	}, true);
 
 	const missing = Engine.getMissingFeatures({
 		threads: GODOT_THREADS_ENABLED,
