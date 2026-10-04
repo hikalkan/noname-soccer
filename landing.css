@@ -131,25 +131,92 @@ a {
 	}
 }
 
-.lang {
-	display: flex;
-	gap: 0.35rem;
+.lang-menu {
+	position: relative;
+	flex: 0 0 auto;
 }
-
-.lang-btn {
-	font: inherit;
+.lang-menu summary {
+	display: flex;
+	align-items: center;
+	gap: 0.55rem;
+	list-style: none;
 	font-weight: 700;
+	font-size: 0.92rem;
+	color: var(--ink);
 	border: 1px solid rgba(255, 255, 255, 0.18);
-	background: transparent;
-	color: var(--muted);
-	padding: 0.35rem 0.7rem;
+	padding: 0.38rem 0.8rem 0.38rem 0.95rem;
 	border-radius: 999px;
 	cursor: pointer;
+	user-select: none;
 }
-.lang-btn[aria-pressed="true"] {
-	background: var(--yellow);
-	color: #111;
+.lang-menu summary::-webkit-details-marker {
+	display: none;
+}
+.lang-menu summary:hover,
+.lang-menu summary:focus-visible,
+.lang-menu[open] summary {
+	color: var(--yellow);
 	border-color: var(--yellow);
+}
+.lang-chev {
+	width: 0.45rem;
+	height: 0.45rem;
+	border-right: 2px solid currentColor;
+	border-bottom: 2px solid currentColor;
+	transform: translateY(-0.12rem) rotate(45deg);
+	transition: transform 0.15s ease;
+}
+.lang-menu[open] .lang-chev {
+	transform: translateY(0.12rem) rotate(-135deg);
+}
+.lang-list {
+	position: absolute;
+	right: 0;
+	top: calc(100% + 0.45rem);
+	min-width: 10rem;
+	margin: 0;
+	padding: 0.35rem;
+	list-style: none;
+	background: rgba(18, 35, 58, 0.98);
+	border: 1px solid var(--line);
+	border-radius: 12px;
+	box-shadow: var(--shadow);
+}
+.lang-list a {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 0.5rem 0.75rem;
+	border-radius: 8px;
+	color: var(--ink);
+	font-weight: 700;
+	text-decoration: none;
+}
+.lang-list a:hover,
+.lang-list a:focus-visible {
+	background: rgba(255, 255, 255, 0.08);
+	color: var(--yellow);
+}
+.lang-list a[aria-current="true"] {
+	color: var(--yellow);
+}
+.lang-list a[aria-current="true"]::after {
+	content: "";
+	width: 0.3rem;
+	height: 0.6rem;
+	border-right: 2px solid currentColor;
+	border-bottom: 2px solid currentColor;
+	transform: translateY(-0.1rem) rotate(45deg);
+}
+
+.lang-pick {
+	display: flex;
+	gap: 1rem;
+	padding: 0;
+	list-style: none;
+	font-weight: 700;
+	font-size: 1.1rem;
 }
 
 .hero {
@@ -1020,6 +1087,9 @@ html[lang="en"] .voice-play[data-voice="en"] {
 	border-radius: var(--radius);
 	background: rgba(18, 35, 58, 0.97);
 	box-shadow: var(--shadow);
+}
+.cookie-bar[hidden] {
+	display: none;
 }
 .cookie-bar p {
 	margin: 0;

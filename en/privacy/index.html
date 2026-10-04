@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Privacy Policy — Noname Soccer</title>
+	<meta name="description" content="How the Noname Soccer website and game handle your data: Google Analytics on the site, no data collection in the game, and what an online match sends.">
+	<link rel="canonical" href="https://nonamesoccer.com/en/privacy/">
+	<link rel="alternate" hreflang="en" href="https://nonamesoccer.com/en/privacy/">
+	<link rel="alternate" hreflang="tr" href="https://nonamesoccer.com/tr/privacy/">
+	<link rel="alternate" hreflang="x-default" href="https://nonamesoccer.com/privacy.html">
+	<meta property="og:site_name" content="Noname Soccer">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Privacy Policy — Noname Soccer">
+	<meta property="og:description" content="How the Noname Soccer website and game handle your data: Google Analytics on the site, no data collection in the game, and what an online match sends.">
+	<meta property="og:url" content="https://nonamesoccer.com/en/privacy/">
+	<meta property="og:image" content="https://nonamesoccer.com/img/og.jpg">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:locale:alternate" content="tr_TR">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Privacy Policy — Noname Soccer">
+	<meta name="twitter:description" content="How the Noname Soccer website and game handle your data: Google Analytics on the site, no data collection in the game, and what an online match sends.">
+	<meta name="twitter:image" content="https://nonamesoccer.com/img/og.jpg">
+	<meta name="theme-color" content="#0b1628">
+	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+	<link rel="stylesheet" href="/landing.css">
+	<script src="/analytics.js"></script>
+</head>
+<body data-page="privacy">
+	<a class="skip" href="#main">Skip to content</a>
+
+	<header class="top">
+		<a class="brand" href="/en/">NONAME SOCCER</a>
+		<nav class="top-nav" aria-label="Pages">
+			<a href="/en/">Home</a>
+			<a href="/en/terms/">Terms</a>
+		</nav>
+		<details class="lang-menu">
+			<summary aria-label="Language: English">English <span class="lang-chev" aria-hidden="true"></span></summary>
+			<ul class="lang-list">
+				<li><a href="/en/privacy/" hreflang="en" lang="en" aria-current="true">English</a></li>
+				<li><a href="/tr/privacy/" hreflang="tr" lang="tr">Türkçe</a></li>
+			</ul>
+		</details>
+	</header>
+
+	<main id="main" class="legal">
+		<div class="wrap">
+			<article>
+			<h1>Privacy Policy</h1>
+			<p class="legal-updated">Last updated: October 3, 2026</p>
+
+			<h2>Who we are</h2>
+			<p>The nonamesoccer.com website and the Noname Soccer game are developed and published by Halil İbrahim Kalkan as an individual. "We" in this policy means him. He is the data controller for your personal data.</p>
+
+			<h2>What we collect on the site</h2>
+			<p>We use <strong>Google Analytics 4</strong> to understand how the site is used. Google Analytics collects:</p>
+			<ul>
+				<li>Pages visited, visit duration and where the visit came from (referring site),</li>
+				<li>Device type, operating system, browser and screen size,</li>
+				<li>Approximate location (country / city level),</li>
+				<li>A few click events: the download buttons, "Try in browser", the browser warning being shown, the trailer link and the announcer samples.</li>
+			</ul>
+			<p>Google Analytics 4 does not log or store IP addresses. We do not collect anything that identifies you directly, such as your name or email address. Data is kept for the period set in Google Analytics, at most 14 months.</p>
+
+			<h2>Cookies and browser storage</h2>
+			<p>Google Analytics sets the <code>_ga</code> and <code>_ga_S97V2HGG4T</code> cookies in your browser. They are used to tell repeat visits apart and last 2 years by default. You can delete or block cookies in your browser settings at any time.</p>
+			<p>The site also keeps these preferences only in your browser's local storage (localStorage); they are never sent anywhere:</p>
+			<ul>
+				<li>Your language (TR / EN; the browser version also starts in it the first time you open the game),</li>
+				<li>That you have seen the browser version warning and chose to continue in the browser,</li>
+				<li>That you acknowledged the cookie notice.</li>
+			</ul>
+
+			<h2>The game</h2>
+			<p>Noname Soccer has no accounts and no data collection of its own. Game settings are stored only on your device: in your user profile folder for the desktop builds, and in your browser's storage for the browser version. The game does not send this data to us or anyone else.</p>
+			<p><strong>Online matches:</strong> When you play a friend online, the room code, the game version and the connection setup details pass briefly through <strong>Supabase Realtime</strong> to bring the two games together; they are not stored, and both games leave the channel once connected. The match itself then runs directly between the two players (WebRTC, peer to peer), and only control inputs are sent. Because of this, the two players can see each other's IP address. Google's and Cloudflare's STUN servers are used to set up the connection and see your IP address too. Online play has no accounts, rankings or match statistics.</p>
+			<p><strong>Connection relay (TURN):</strong> On some networks the two games cannot connect directly. The match's control inputs are then relayed through <strong>Cloudflare</strong>'s TURN server, and Cloudflare sees both players' IP addresses. Before a room opens, the game gets a short-lived access credential for this server (valid for at most 2 hours) from a small server function on Supabase. To prevent abuse of this service, the function records the requester's IP address and the time of the request in a Supabase database and accepts at most 20 requests an hour from one IP address. These records are used only for this limit, and those older than a day are deleted.</p>
+			<p><strong>Version check:</strong> The desktop build downloaded from the site reads <code>nonamesoccer.com/version.json</code> once per launch to tell you when a new version is out. No game data is sent with this request. The Microsoft Store version does not do this check; the Store delivers its updates.</p>
+
+			<h2>Third parties</h2>
+			<ul>
+				<li><strong>Google Analytics</strong> (Google LLC): the visit statistics described above. Data may be processed on Google's servers outside your country, including in the United States.</li>
+				<li><strong>YouTube</strong>: the trailer is embedded from <code>youtube-nocookie.com</code>. When you play the video, YouTube's own privacy rules apply.</li>
+				<li><strong>GitHub</strong>: the site is hosted on GitHub Pages and the desktop builds are downloaded from GitHub Releases. GitHub may keep server logs (including IP addresses) to operate the service.</li>
+				<li><strong>Supabase</strong>: brings the two players of an online match together and hands out the TURN credential (as described above). Supabase may keep server logs (including IP addresses) to operate the service.</li>
+				<li><strong>Google and Cloudflare STUN servers</strong>: tell your game its public IP address and port so an online match can connect directly.</li>
+				<li><strong>Cloudflare TURN</strong>: relays the control inputs of an online match between the two players when they cannot connect directly (as described above).</li>
+				<li><strong>Microsoft Store</strong>: if you install the game from the Microsoft Store, installation and updates are covered by Microsoft's own privacy statement.</li>
+			</ul>
+
+			<h2>Your rights</h2>
+			<p>Under the EU General Data Protection Regulation (GDPR) and Türkiye's Personal Data Protection Law No. 6698 (KVKK), you have the right to access your data, ask for it to be corrected or deleted, and object to its processing. You can stop Google Analytics from collecting data about you by blocking cookies in your browser or with Google's <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener">Analytics opt-out add-on</a>.</p>
+
+			<h2>Children</h2>
+			<p>The site and the game are open to everyone, and we do not knowingly collect personal data from children.</p>
+
+			<h2>Changes</h2>
+			<p>We may update this policy from time to time. The current version is always on this page, with the date at the top.</p>
+
+			<h2>Contact</h2>
+			<p>For privacy questions or requests, please <a href="https://github.com/hikalkan/noname-soccer/issues" rel="noopener">open an issue on GitHub</a>.</p>
+			</article>
+		</div>
+	</main>
+
+	<footer class="foot">
+		<div class="wrap foot-inner">
+			<p>Free, independent arcade football. Original team names only — no real clubs or players.</p>
+			<p class="foot-meta">
+				<a href="/en/">Home</a>
+				<a href="https://github.com/hikalkan/noname-soccer" rel="noopener">GitHub</a>
+				<a href="/en/privacy/">Privacy</a>
+				<a href="/en/terms/">Terms</a>
+			</p>
+		</div>
+	</footer>
+
+	<div class="cookie-bar" id="cookie-bar" role="region" aria-label="Cookies" hidden>
+		<p><span>This site uses Google Analytics cookies for visit statistics.</span> <a href="/en/privacy/">Details: Privacy Policy</a></p>
+		<button type="button" class="btn btn-play cookie-ok">OK</button>
+	</div>
+
+	<script src="/landing.js" defer></script>
+</body>
+</html>
