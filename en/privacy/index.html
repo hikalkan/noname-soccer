@@ -50,7 +50,7 @@
 		<div class="wrap">
 			<article>
 			<h1>Privacy Policy</h1>
-			<p class="legal-updated">Last updated: October 3, 2026</p>
+			<p class="legal-updated">Last updated: October 4, 2026</p>
 
 			<h2>Who we are</h2>
 			<p>The nonamesoccer.com website and the Noname Soccer game are developed and published by Halil İbrahim Kalkan as an individual. "We" in this policy means him. He is the data controller for your personal data.</p>
@@ -76,7 +76,8 @@
 
 			<h2>The game</h2>
 			<p>Noname Soccer has no accounts and no data collection of its own. Game settings are stored only on your device: in your user profile folder for the desktop builds, and in your browser's storage for the browser version. The game does not send this data to us or anyone else.</p>
-			<p><strong>Online matches:</strong> When you play a friend online, the room code, the game version and the connection setup details pass briefly through <strong>Supabase Realtime</strong> to bring the two games together; they are not stored, and both games leave the channel once connected. The match itself then runs directly between the two players (WebRTC, peer to peer), and only control inputs are sent. Because of this, the two players can see each other's IP address. Google's and Cloudflare's STUN servers are used to set up the connection and see your IP address too. Online play has no accounts, rankings or match statistics.</p>
+			<p><strong>Online matches:</strong> When you play online, the room code, the game version and the connection setup details pass briefly through <strong>Supabase Realtime</strong> to bring the two games together; they are not stored, and both games leave the channel once connected. The match itself then runs directly between the two players (WebRTC, peer to peer), and only control inputs are sent. Because of this, the two players can see each other's IP address. Google's and Cloudflare's STUN servers are used to set up the connection and see your IP address too. Online play has no accounts, rankings or match statistics.</p>
+			<p><strong>Finding a random opponent:</strong> When you choose "Find an opponent", the game puts an entry into a waiting queue in a <strong>Supabase</strong> database: a random ticket number made up for this search, your room code, a code for the game version, and a rough region (one of four, worked out from your device's time zone). No name or account is stored. An entry is deleted as soon as you are matched or cancel, and at the latest a minute after your game stops asking. To prevent abuse, the queue also records the requester's IP address and the time of each new search and accepts at most 60 searches an hour from one IP address; these records are used only for this limit and are deleted after an hour.</p>
 			<p><strong>Connection relay (TURN):</strong> On some networks the two games cannot connect directly. The match's control inputs are then relayed through <strong>Cloudflare</strong>'s TURN server, and Cloudflare sees both players' IP addresses. Before a room opens, the game gets a short-lived access credential for this server (valid for at most 2 hours) from a small server function on Supabase. To prevent abuse of this service, the function records the requester's IP address and the time of the request in a Supabase database and accepts at most 20 requests an hour from one IP address. These records are used only for this limit, and those older than a day are deleted.</p>
 			<p><strong>Version check:</strong> The desktop build downloaded from the site reads <code>nonamesoccer.com/version.json</code> once per launch to tell you when a new version is out. No game data is sent with this request. The Microsoft Store version does not do this check; the Store delivers its updates.</p>
 
@@ -85,7 +86,7 @@
 				<li><strong>Google Analytics</strong> (Google LLC): the visit statistics described above. Data may be processed on Google's servers outside your country, including in the United States.</li>
 				<li><strong>YouTube</strong>: the trailer is embedded from <code>youtube-nocookie.com</code>. When you play the video, YouTube's own privacy rules apply.</li>
 				<li><strong>GitHub</strong>: the site is hosted on GitHub Pages and the desktop builds are downloaded from GitHub Releases. GitHub may keep server logs (including IP addresses) to operate the service.</li>
-				<li><strong>Supabase</strong>: brings the two players of an online match together and hands out the TURN credential (as described above). Supabase may keep server logs (including IP addresses) to operate the service.</li>
+				<li><strong>Supabase</strong>: brings the two players of an online match together, keeps the short-lived queue for random opponents and hands out the TURN credential (as described above). Supabase may keep server logs (including IP addresses) to operate the service.</li>
 				<li><strong>Google and Cloudflare STUN servers</strong>: tell your game its public IP address and port so an online match can connect directly.</li>
 				<li><strong>Cloudflare TURN</strong>: relays the control inputs of an online match between the two players when they cannot connect directly (as described above).</li>
 				<li><strong>Microsoft Store</strong>: if you install the game from the Microsoft Store, installation and updates are covered by Microsoft's own privacy statement.</li>

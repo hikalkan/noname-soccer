@@ -50,7 +50,7 @@
 		<div class="wrap">
 			<article>
 			<h1>Gizlilik Politikası</h1>
-			<p class="legal-updated">Son güncelleme: 3 Ekim 2026</p>
+			<p class="legal-updated">Son güncelleme: 4 Ekim 2026</p>
 
 			<h2>Biz kimiz</h2>
 			<p>nonamesoccer.com sitesini ve Noname Soccer oyununu Halil İbrahim Kalkan bireysel olarak geliştirir ve yayınlar. Bu metinde "biz" derken onu kastediyoruz. Kişisel verileriniz için veri sorumlusu da odur.</p>
@@ -76,7 +76,8 @@
 
 			<h2>Oyun</h2>
 			<p>Noname Soccer'da hesap ya da oyuna ait bir veri toplama sistemi yoktur. Oyun ayarları yalnızca kendi cihazınızda saklanır: masaüstü sürümünde kullanıcı profil klasörünüzde, tarayıcı sürümünde tarayıcınızın depolamasında. Oyun bu verileri bize veya başka birine göndermez.</p>
-			<p><strong>Online maç:</strong> Bir arkadaşınızla online oynadığınızda iki oyunu buluşturmak için oda kodu, oyun sürümü ve bağlantı kurma bilgileri <strong>Supabase Realtime</strong> üzerinden kısa süreliğine iletilir; bunlar saklanmaz ve bağlantı kurulunca kanaldan çıkılır. Maç daha sonra iki oyuncu arasında doğrudan (WebRTC ile, eşler arası) oynanır ve yalnızca kontrol girdileri gönderilir. Bu yüzden iki oyuncu birbirinin IP adresini görebilir. Bağlantıyı kurmak için Google ve Cloudflare'in STUN sunucuları kullanılır; bu sunucular da IP adresinizi görür. Online oyunda hesap, sıralama ya da maç istatistiği yoktur.</p>
+			<p><strong>Online maç:</strong> Online oynadığınızda iki oyunu buluşturmak için oda kodu, oyun sürümü ve bağlantı kurma bilgileri <strong>Supabase Realtime</strong> üzerinden kısa süreliğine iletilir; bunlar saklanmaz ve bağlantı kurulunca kanaldan çıkılır. Maç daha sonra iki oyuncu arasında doğrudan (WebRTC ile, eşler arası) oynanır ve yalnızca kontrol girdileri gönderilir. Bu yüzden iki oyuncu birbirinin IP adresini görebilir. Bağlantıyı kurmak için Google ve Cloudflare'in STUN sunucuları kullanılır; bu sunucular da IP adresinizi görür. Online oyunda hesap, sıralama ya da maç istatistiği yoktur.</p>
+			<p><strong>Rastgele rakip bulma:</strong> "Rakip Bul"u seçtiğinizde oyun, <strong>Supabase</strong> veritabanındaki bir bekleme kuyruğuna bir kayıt ekler: yalnızca bu arama için üretilen rastgele bir bilet numarası, oda kodunuz, oyun sürümünü belirten bir kod ve kaba bir bölge (cihazınızın saat diliminden çıkarılan dört bölgeden biri). Ad ya da hesap saklanmaz. Kayıt, eşleştiğiniz ya da aramayı iptal ettiğiniz anda, en geç de oyununuz sormayı bıraktıktan bir dakika sonra silinir. Kötüye kullanımı önlemek için kuyruk, her yeni aramada isteği yapanın IP adresini ve zamanını da kaydeder ve bir IP adresinden saatte en fazla 60 arama kabul eder; bu kayıtlar yalnızca bu sınır için kullanılır ve bir saat sonra silinir.</p>
 			<p><strong>Bağlantı aktarıcısı (TURN):</strong> Bazı ağlarda iki oyun doğrudan bağlanamaz. Bu durumda maçın kontrol girdileri <strong>Cloudflare</strong>'in TURN sunucusu üzerinden aktarılır ve Cloudflare iki oyuncunun IP adresini görür. Oyun, oda açılmadan önce bu sunucu için kısa ömürlü (en fazla 2 saat geçerli) bir erişim bilgisini Supabase üzerindeki küçük bir sunucu fonksiyonundan alır. Bu hizmetin kötüye kullanılmasını önlemek için fonksiyon, isteği yapanın IP adresini ve isteğin zamanını Supabase veritabanına kaydeder ve bir IP adresinden saatte en fazla 20 istek kabul eder. Bu kayıtlar yalnızca bu sınır için kullanılır ve bir günden eski olanlar silinir.</p>
 			<p><strong>Sürüm kontrolü:</strong> Siteden indirilen masaüstü sürümü, yeni bir sürüm çıkıp çıkmadığını göstermek için her açılışta bir kez <code>nonamesoccer.com/version.json</code> dosyasını okur. Bu istekle hiçbir oyun verisi gönderilmez. Microsoft Store sürümü bu kontrolü yapmaz; güncellemeleri Store dağıtır.</p>
 
@@ -85,7 +86,7 @@
 				<li><strong>Google Analytics</strong> (Google LLC): yukarıda anlatılan ziyaret istatistikleri. Veriler Google'ın sunucularında, ABD dahil yurt dışında işlenebilir.</li>
 				<li><strong>YouTube</strong>: fragman <code>youtube-nocookie.com</code> üzerinden gömülüdür. Videoyu oynattığınızda YouTube'un kendi gizlilik kuralları geçerli olur.</li>
 				<li><strong>GitHub</strong>: site GitHub Pages üzerinde barındırılır, masaüstü sürümleri GitHub Releases üzerinden indirilir. GitHub, hizmetin işleyişi için sunucu kayıtları (IP adresi dahil) tutabilir.</li>
-				<li><strong>Supabase</strong>: online maçta iki oyuncuyu buluşturmak ve TURN erişim bilgisini vermek için kullanılır (yukarıda anlatıldığı gibi). Supabase, hizmetin işleyişi için sunucu kayıtları (IP adresi dahil) tutabilir.</li>
+				<li><strong>Supabase</strong>: online maçta iki oyuncuyu buluşturmak, rastgele rakip için kısa ömürlü kuyruğu tutmak ve TURN erişim bilgisini vermek için kullanılır (yukarıda anlatıldığı gibi). Supabase, hizmetin işleyişi için sunucu kayıtları (IP adresi dahil) tutabilir.</li>
 				<li><strong>Google ve Cloudflare STUN sunucuları</strong>: online maçta doğrudan bağlantı kurulabilmesi için IP adresinizi ve bağlantı noktanızı size bildirir.</li>
 				<li><strong>Cloudflare TURN</strong>: doğrudan bağlantı kurulamadığında online maçın kontrol girdilerini iki oyuncu arasında aktarır (yukarıda anlatıldığı gibi).</li>
 				<li><strong>Microsoft Store</strong>: oyunu Microsoft Store'dan kurarsanız kurulum ve güncellemeler Microsoft'un kendi gizlilik bildirimine tabidir.</li>
