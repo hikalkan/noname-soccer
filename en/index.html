@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Noname Soccer — Free arcade football game</title>
-	<meta name="description" content="Free arcade 11v11 soccer. Play against the CPU, with a friend on one computer or online. In the browser or on Windows and macOS, no account needed.">
+	<meta name="description" content="Free arcade 11v11 soccer. Play against the CPU, with a friend on one computer or online. In the browser, on Windows (Microsoft Store) or macOS, no account needed.">
 	<link rel="canonical" href="https://nonamesoccer.com/en/">
 	<link rel="alternate" hreflang="en" href="https://nonamesoccer.com/en/">
 	<link rel="alternate" hreflang="tr" href="https://nonamesoccer.com/tr/">
@@ -12,7 +12,7 @@
 	<meta property="og:site_name" content="Noname Soccer">
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="Noname Soccer — Free arcade football game">
-	<meta property="og:description" content="Free arcade 11v11 soccer. Play against the CPU, with a friend on one computer or online. In the browser or on Windows and macOS, no account needed.">
+	<meta property="og:description" content="Free arcade 11v11 soccer. Play against the CPU, with a friend on one computer or online. In the browser, on Windows (Microsoft Store) or macOS, no account needed.">
 	<meta property="og:url" content="https://nonamesoccer.com/en/">
 	<meta property="og:image" content="https://nonamesoccer.com/img/og.jpg">
 	<meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
 	<meta property="og:locale:alternate" content="tr_TR">
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:title" content="Noname Soccer — Free arcade football game">
-	<meta name="twitter:description" content="Free arcade 11v11 soccer. Play against the CPU, with a friend on one computer or online. In the browser or on Windows and macOS, no account needed.">
+	<meta name="twitter:description" content="Free arcade 11v11 soccer. Play against the CPU, with a friend on one computer or online. In the browser, on Windows (Microsoft Store) or macOS, no account needed.">
 	<meta name="twitter:image" content="https://nonamesoccer.com/img/og.jpg">
 	<meta name="theme-color" content="#0b1628">
 	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -46,7 +46,7 @@
 				"@id": "https://nonamesoccer.com/en/#game",
 				"name": "Noname Soccer",
 				"url": "https://nonamesoccer.com/en/",
-				"description": "Free arcade 11v11 soccer. Play against the CPU, with a friend on one computer or online. In the browser or on Windows and macOS, no account needed.",
+				"description": "Free arcade 11v11 soccer. Play against the CPU, with a friend on one computer or online. In the browser, on Windows (Microsoft Store) or macOS, no account needed.",
 				"image": "https://nonamesoccer.com/img/og.jpg",
 				"screenshot": [
 					"https://nonamesoccer.com/img/match.jpg",
@@ -78,12 +78,14 @@
 					"price": "0",
 					"priceCurrency": "USD"
 				},
+				"installUrl": "https://apps.microsoft.com/detail/9PKRVX0L5R3S?cid=landing",
 				"author": {
 					"@type": "Person",
 					"name": "Halil İbrahim Kalkan"
 				},
 				"sameAs": [
-					"https://github.com/hikalkan/noname-soccer"
+					"https://github.com/hikalkan/noname-soccer",
+					"https://apps.microsoft.com/detail/9PKRVX0L5R3S"
 				]
 			}
 		]
@@ -289,18 +291,32 @@
 		<section class="section download" id="download" aria-labelledby="dl-title">
 			<div class="wrap">
 				<h2 id="dl-title">Download</h2>
-				<p class="section-lead">Free portable builds — unzip and play. No installer. Settings live in your user profile.</p>
+				<p class="section-lead">Free on every platform. On Windows, get it from the Microsoft Store and it stays up to date by itself; macOS (and Windows, if you prefer) comes as a portable zip. Settings live in your user profile.</p>
 				<p class="dl-version"><span>Latest version</span> <span class="version-num">1.1.1</span></p>
 				<div class="dl-grid">
 					<article class="dl-card" data-os="windows">
-						<h3>Windows</h3>
-						<p class="dl-meta">x64 · ~95 MB zip · no installer</p>
-						<a class="btn btn-dl" id="dl-win"
-							href="https://github.com/hikalkan/noname-soccer/releases/latest/download/NonameSoccer-windows-x64.zip">Download for Windows</a>
-						<ol class="dl-steps">
-							<li>Unzip anywhere and run NonameSoccer.exe. Keep the files in the folder together (online play needs them).</li>
-							<li>If SmartScreen warns: More info → Run anyway.</li>
-						</ol>
+						<div class="dl-card-head">
+							<h3>Windows</h3>
+							<span class="dl-rec">Recommended</span>
+						</div>
+						<p class="dl-meta">Microsoft Store · free · automatic updates</p>
+						<a class="store-badge" id="dl-win-store" href="https://apps.microsoft.com/detail/9PKRVX0L5R3S?cid=landing" data-store-app="ms-windows-store://pdp/?productid=9PKRVX0L5R3S&amp;cid=landing" rel="noopener">
+							<img src="/img/store-badge-en.svg" alt="Download from the Microsoft Store" height="44">
+						</a>
+						<p class="dl-store-web" hidden><a href="https://apps.microsoft.com/detail/9PKRVX0L5R3S?cid=landing" rel="noopener">Store app didn't open? View the listing on the web</a></p>
+						<ul class="dl-perks">
+							<li>One-click install, no SmartScreen warning.</li>
+							<li>New versions arrive automatically through the Store.</li>
+						</ul>
+						<details class="dl-alt">
+							<summary>Prefer a portable zip? (x64 · ~95 MB · no installer)</summary>
+							<a class="btn btn-dl-alt" id="dl-win"
+								href="https://github.com/hikalkan/noname-soccer/releases/latest/download/NonameSoccer-windows-x64.zip">Download the zip</a>
+							<ol class="dl-steps">
+								<li>Unzip anywhere and run NonameSoccer.exe. Keep the files in the folder together (online play needs them).</li>
+								<li>If SmartScreen warns: More info → Run anyway.</li>
+							</ol>
+						</details>
 					</article>
 					<article class="dl-card" data-os="mac">
 						<h3>macOS</h3>
@@ -386,11 +402,11 @@
 		</form>
 		<div class="pw-desktop">
 			<h2 id="pw-title">The browser version runs slower</h2>
-			<p>For the smoothest match, download the free desktop build. You can still play in the browser, but the frame rate may drop.</p>
+			<p>For the smoothest match, get the free desktop version. You can still play in the browser, but the frame rate may drop.</p>
 			<div class="pw-actions">
-				<a class="btn btn-play pw-dl" id="pw-dl-win" data-os="windows"
-					href="https://github.com/hikalkan/noname-soccer/releases/latest/download/NonameSoccer-windows-x64.zip">Download for Windows</a>
-				<a class="btn btn-play pw-dl" id="pw-dl-mac" data-os="mac"
+				<a class="btn btn-play pw-dl" id="pw-dl-win" data-os="windows" data-channel="store"
+					href="https://apps.microsoft.com/detail/9PKRVX0L5R3S?cid=landing" data-store-app="ms-windows-store://pdp/?productid=9PKRVX0L5R3S&amp;cid=landing" rel="noopener">Get it from Microsoft Store</a>
+				<a class="btn btn-play pw-dl" id="pw-dl-mac" data-os="mac" data-channel="zip"
 					href="https://github.com/hikalkan/noname-soccer/releases/latest/download/NonameSoccer-macos.zip">Download for macOS</a>
 				<a class="btn btn-ghost" id="pw-continue" href="/play/">Play in the browser anyway</a>
 			</div>

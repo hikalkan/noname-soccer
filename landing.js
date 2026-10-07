@@ -64,6 +64,16 @@
 		});
 	}
 
+	function setupStoreLinks() {
+		if (detectOs() !== "windows" || isMobile()) return;
+		document.querySelectorAll("[data-store-app]").forEach(function (a) {
+			a.setAttribute("href", a.getAttribute("data-store-app"));
+		});
+		document.querySelectorAll(".dl-store-web").forEach(function (p) {
+			p.hidden = false;
+		});
+	}
+
 	function setupLightbox() {
 		var dlg = document.getElementById("lightbox");
 		var img = document.getElementById("lb-img");
@@ -176,7 +186,7 @@
 		if (all) all.addEventListener("click", function () { dlg.close(); });
 		dlg.querySelectorAll(".pw-dl").forEach(function (a) {
 			a.addEventListener("click", function () {
-				track("download", { os: a.getAttribute("data-os"), source: "play_warning" });
+				track("download", { os: a.getAttribute("data-os"), channel: a.getAttribute("data-channel"), source: "play_warning" });
 				dlg.close();
 			});
 		});
@@ -187,10 +197,10 @@
 	}
 
 	function setupTracking() {
-		[["dl-win", "windows"], ["dl-mac", "mac"]].forEach(function (pair) {
-			var a = document.getElementById(pair[0]);
+		[["dl-win-store", "windows", "store"], ["dl-win", "windows", "zip"], ["dl-mac", "mac", "zip"]].forEach(function (link) {
+			var a = document.getElementById(link[0]);
 			if (a) a.addEventListener("click", function () {
-				track("download", { os: pair[1], source: "download_section" });
+				track("download", { os: link[1], channel: link[2], source: "download_section" });
 			});
 		});
 		document.querySelectorAll(".trailer-link").forEach(function (a) {
@@ -310,6 +320,7 @@
 	setupLangMenu();
 	hideUnstampedVersion();
 	setupOsHighlight();
+	setupStoreLinks();
 	setupLightbox();
 	setupPlayWarning();
 	setupTracking();

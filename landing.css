@@ -762,6 +762,132 @@ html[lang="en"] .voice-play[data-voice="en"] {
 	font-family: "Russo One", sans-serif;
 	font-size: 1.35rem;
 }
+.dl-card-head {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.4rem 0.7rem;
+}
+.dl-rec {
+	padding: 0.12rem 0.6rem;
+	border-radius: 999px;
+	background: var(--yellow);
+	color: #111;
+	font-family: "Russo One", sans-serif;
+	font-size: 0.72rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+.store-badge {
+	display: inline-block;
+	margin: 0.9rem 0 0.85rem;
+	border-radius: 8px;
+	line-height: 0;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+	transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.store-badge img {
+	width: auto;
+	height: 3.5rem;
+}
+.store-badge:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 10px 28px rgba(245, 213, 71, 0.22);
+}
+.store-badge:active {
+	transform: translateY(1px);
+}
+.store-badge:focus-visible {
+	outline: 2px solid var(--yellow);
+	outline-offset: 3px;
+}
+.dl-store-web {
+	margin: -0.35rem 0 0.85rem;
+	font-size: 0.85rem;
+}
+.dl-store-web[hidden] {
+	display: none;
+}
+.dl-store-web a {
+	color: var(--muted);
+}
+.dl-store-web a:hover,
+.dl-store-web a:focus-visible {
+	color: var(--yellow);
+}
+.dl-perks {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	color: var(--ink);
+	font-size: 0.95rem;
+}
+.dl-perks li {
+	position: relative;
+	padding-left: 1.5rem;
+}
+.dl-perks li + li {
+	margin-top: 0.35rem;
+}
+.dl-perks li::before {
+	content: "";
+	position: absolute;
+	left: 0.3rem;
+	top: 0.32rem;
+	width: 0.32rem;
+	height: 0.65rem;
+	border-right: 2px solid var(--pitch-bright);
+	border-bottom: 2px solid var(--pitch-bright);
+	transform: rotate(45deg);
+}
+.dl-alt {
+	margin-top: 1.15rem;
+	padding-top: 0.9rem;
+	border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.dl-alt summary {
+	display: flex;
+	align-items: center;
+	gap: 0.55rem;
+	list-style: none;
+	color: var(--muted);
+	font-size: 0.92rem;
+	font-weight: 700;
+	cursor: pointer;
+	user-select: none;
+}
+.dl-alt summary::-webkit-details-marker {
+	display: none;
+}
+.dl-alt summary::before {
+	content: "";
+	flex: 0 0 auto;
+	width: 0.4rem;
+	height: 0.4rem;
+	border-right: 2px solid currentColor;
+	border-bottom: 2px solid currentColor;
+	transform: rotate(-45deg);
+	transition: transform 0.15s ease;
+}
+.dl-alt[open] summary::before {
+	transform: translateY(-0.12rem) rotate(45deg);
+}
+.dl-alt summary:hover,
+.dl-alt summary:focus-visible {
+	color: var(--yellow);
+}
+.btn-dl-alt {
+	margin: 0.85rem 0 0.9rem;
+	padding: 0.6rem 1.1rem;
+	background: rgba(255, 255, 255, 0.06);
+	border-color: rgba(255, 255, 255, 0.28);
+	color: var(--ink);
+	font-size: 0.95rem;
+}
+.btn-dl-alt:hover {
+	border-color: var(--yellow);
+	color: var(--yellow);
+}
 .dl-meta {
 	margin: 0.35rem 0 0;
 	color: var(--muted);
@@ -1157,6 +1283,8 @@ html[lang="en"] .voice-play[data-voice="en"] {
 		scroll-behavior: auto;
 	}
 	.btn,
+	.store-badge,
+	.dl-alt summary::before,
 	.shot img,
 	.voice-badge,
 	.voice-play {
